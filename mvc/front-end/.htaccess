@@ -16,3 +16,5 @@ RewriteRule chi-tiet-san-pham/([0-9]{1,}) index.php?controller=product&action=de
 RewriteRule cart.html index.php?controller=cart&action=index
 
 RewriteRule login.html index.php?controller=user&action=login
+
+RewriteRule register.html index.php?controller=user&action=register

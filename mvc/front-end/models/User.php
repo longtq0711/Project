@@ -11,8 +11,8 @@ class User extends Model
         $sql_insert = "INSERT INTO users(username, password) VALUES(:username, :password)";
         $obj_insert = $this->connection->prepare($sql_insert);
         $inserts = [
-            ':username' => $username,
-            ':password' => $password
+            ':username' => $this->username,
+            ':password' => $this->password
         ];
         $is_insert = $obj_insert->execute($inserts);
         return $is_insert;

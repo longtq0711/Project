@@ -10,7 +10,7 @@ class UserController extends Controller{
             $password_confirm = $_POST['password_confirm'];
             $user_model = new User();
             $user = $user_model->getUser($username);
-            if(empty($username)){
+            if(empty($username)||empty($password)){
                 $this->error = "Please input username/password";
             } elseif($password!=$password_confirm){
                 $this->error = "Please reconfirm the password";
@@ -29,7 +29,7 @@ class UserController extends Controller{
             }
         }
         $this->content = $this->render('views/login/register.php');
-        require_once 'views/layouts/main.php';
+        require_once 'views/layouts/main_login.php';
     }
     public function login(){
         if(isset($_SESSION['username'])){
@@ -56,7 +56,7 @@ class UserController extends Controller{
                 }
             }
         }
-        $this->render('views/login/login.php');
+        $this->content = $this->render('views/login/login.php');
         require_once 'views/layouts/main_login.php';
     }
 }
