@@ -137,7 +137,7 @@ require_once 'helpers/Helper.php';
     <div class="popular-items section-padding30">
         <div class="container">
             <!-- Section tittle -->
-                <?php if (!empty($products)): ?>
+
                 <div class="row justify-content-center">
                     <div class="col-xl-7 col-lg-8 col-md-10">
                         <div class="section-tittle mb-70 text-center">
@@ -146,6 +146,7 @@ require_once 'helpers/Helper.php';
                         </div>
                     </div>
                 </div>
+            <?php if (!empty($products)): ?>
                     <div class="row">
                         <?php foreach ($products AS $product):
                         $slug = Helper::getSlug($product['title']);
@@ -157,7 +158,7 @@ require_once 'helpers/Helper.php';
                                 <div class="popular-img">
                                     <img src="../backend/assets/uploads/<?php echo $product['avatar']?>" alt="<?php echo $product['title'] ?>">
                                     <div class="img-cap">
-                                        <span data-id="<?php echo $product['id']?>" class="add-to-cart">
+                                        <span data-id="<?php echo $product['id'];?>" class="add-to-cart">
                                             <a href="#">Add to cart</a>
                                         </span>
                                     </div>
@@ -166,8 +167,8 @@ require_once 'helpers/Helper.php';
                                     </div>
                                 </div>
                                 <div class="popular-caption">
-                                    <h3><a href="product_details.html"><?php echo $product['title'] ?></a></h3>
-                                    <span><?php echo number_format($product['price']) ?> VNĐ</span>
+                                    <h3><a href="product_details/<?php echo $product['id'];?>.html"><?php echo $product['title']; ?></a></h3>
+                                    <span><?php echo number_format($product['price']); ?> VNĐ</span>
                                 </div>
                             </div>
                         </div>

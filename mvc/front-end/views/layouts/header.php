@@ -31,7 +31,7 @@
                                 <li class="hot"><a href="#">Latest</a>
                                     <ul class="submenu">
                                         <li><a href="products/shop.php"> Product list</a></li>
-                                        <li><a href="products/products_detail.php"> Product Details</a></li>
+                                        <li><a href="product_detail/.html"> Product Details</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="blog.html">Blog</a>

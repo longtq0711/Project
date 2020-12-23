@@ -40,7 +40,7 @@
                                     <td>
                                         <div class="media">
                                             <div class="d-flex">
-                                                <img src="../backend/assets/uploads/<?php echo $cart['avatar'] ?>"
+                                                <img src="<?php echo $cart['avatar'] ?>"
                                                      alt=""/>
                                             </div>
                                         </div>
@@ -69,7 +69,7 @@
                                     <td>
                                         <h5>
                                             <a style="color:#415094" href="index.php?controller=cart&action=delete&id=<?php
-                                            echo $product_id?>">Delete</a>
+                                            echo $product_id;?>">Delete</a>
                                         </h5>
                                     </td>
                                 </tr>

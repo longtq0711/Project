@@ -2,7 +2,7 @@
 require_once 'models/Model.php';
 class Product extends Model {
 
-  public function getProductInHomePage($params = []) {
+  public function getProduct($params = []) {
     $str_filter = '';
     if (isset($params['category'])) {
       $str_category = $params['category'];
@@ -40,6 +40,21 @@ class Product extends Model {
     $product =  $obj_select->fetch(PDO::FETCH_ASSOC);
     return $product;
   }
+    public function getPopular()
+    {
+        $obj_select = $this->connection
+            ->prepare("SELECT products.*, categories.name AS category_name FROM products 
+                        INNER JOIN categories ON categories.id = products.category_id
+                        WHERE category_name LIKE 'Popular item'
+                        ORDER BY products.created_at DESC
+                        ");
+
+        $arr_select = [];
+        $obj_select->execute($arr_select);
+        $popular = $obj_select->fetchAll(PDO::FETCH_ASSOC);
+
+        return $popular;
+    }
   public  function getProductByID($product_id){
       // - Tạo câu truy vấn
       $sql_select_one = "SELECT * FROM products WHERE id = $product_id";

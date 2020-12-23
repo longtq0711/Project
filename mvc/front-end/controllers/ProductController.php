@@ -51,13 +51,13 @@ class ProductController extends Controller {
 //    $pagination = $pagination_model->getPagination();
     //get products
     $product_model = new Product();
-    $products = $product_model->getProductInHomePage($params);
+    $products = $product_model->getProduct($params);
 
     //get categories để filter
     $category_model = new Category();
     $categories = $category_model->getAll();
 
-    $this->content = $this->render('views/products/show_all.php', [
+    $this->content = $this->render('views/products/shop.php', [
       'products' => $products,
       'categories' => $categories
 //      'pagination' => $pagination,
@@ -77,8 +77,7 @@ class ProductController extends Controller {
     $id = $_GET['id'];
     $product_model = new Product();
     $product = $product_model->getById($id);
-
-    $this->content = $this->render('views/products/detail.php', [
+    $this->content = $this->render('views/products/products_detail.php', [
       'product' => $product
     ]);
     require_once 'views/layouts/main.php';
