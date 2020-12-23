@@ -34,13 +34,13 @@
                                         <li><a href="products/products_detail.php"> Product Details</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="../blog/blog.php">Blog</a>
+                                <li><a href="blog.html">Blog</a>
                                     <ul class="submenu">
-                                        <li><a href="blog/blog.php">Blog</a></li>
-                                        <li><a href="blog/blog-details.php">Blog Details</a></li>
+                                        <li><a href="blog.html">Blog</a></li>
+                                        <li><a href="blog-detail.html">Blog Details</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="contact/contact.php">Contact</a></li>
+                                <li><a href="contact.html">Contact</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -53,10 +53,26 @@
                                 </div>
                             </li>
                             <li> <a href="login.html"><span class="flaticon-user"></span></a></li>
-                            <li><a href="cart.html"><span class="flaticon-shopping-cart"></span></a> </li>
+                            <li>
+                                <a href="cart.html" class="cart-link">
+                                    <?php
+                                    $cart_total = 0;
+                                    if (isset($_SESSION['cart'])) {
+                                        foreach ($_SESSION['cart'] AS $cart) {
+                                            $cart_total += $cart['quantity'];
+                                        }
+                                    }
+                                    ?>
+                                    <span class="flaticon-shopping-cart" >
+                                    <?php echo $cart_total; ?>
+                                    </span>
+                                </a>
+                            </li>
+
                         </ul>
                     </div>
                 </div>
+                <span class="ajax-message"></span>
                 <!-- Mobile Menu -->
                 <div class="col-12">
                     <div class="mobile_menu d-block d-lg-none"></div>

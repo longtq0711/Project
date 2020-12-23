@@ -1,4 +1,6 @@
-
+<?php
+require_once 'helpers/Helper.php';
+?>
     <!--? slider Area Start -->
     <div class="slider-area ">
         <div class="slider-active">
@@ -135,154 +137,87 @@
     <div class="popular-items section-padding30">
         <div class="container">
             <!-- Section tittle -->
-            <div class="row justify-content-center">
-                <div class="col-xl-7 col-lg-8 col-md-10">
-                    <div class="section-tittle mb-70 text-center">
-                        <h2>Popular Items</h2>
-                        <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-popular-items mb-50 text-center">
-                        <div class="popular-img">
-                            <img src="assets/img/gallery/popular1.png" alt="">
-                            <div class="img-cap">
-                                <span>Add to cart</span>
-                            </div>
-                            <div class="favorit-items">
-                                <span class="flaticon-heart"></span>
-                            </div>
-                        </div>
-                        <div class="popular-caption">
-                            <h3><a href="product_details.html">Thermo Ball Etip Gloves</a></h3>
-                            <span>$ 45,743</span>
+                <?php if (!empty($products)): ?>
+                <div class="row justify-content-center">
+                    <div class="col-xl-7 col-lg-8 col-md-10">
+                        <div class="section-tittle mb-70 text-center">
+                            <h2>Popular Items</h2>
+                            <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-popular-items mb-50 text-center">
-                        <div class="popular-img">
-                            <img src="assets/img/gallery/popular2.png" alt="">
-                            <div class="img-cap">
-                                <span>Add to cart</span>
-                            </div>
-                            <div class="favorit-items">
-                                <span class="flaticon-heart"></span>
+                    <div class="row">
+                        <?php foreach ($products AS $product):
+                        $slug = Helper::getSlug($product['title']);
+                        $product_link = "product_details/$slug/";
+                        $product_cart_add = "";
+                        ?>
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                            <div class="single-popular-items mb-50 text-center">
+                                <div class="popular-img">
+                                    <img src="../backend/assets/uploads/<?php echo $product['avatar']?>" alt="<?php echo $product['title'] ?>">
+                                    <div class="img-cap">
+                                        <span data-id="<?php echo $product['id']?>" class="add-to-cart">
+                                            <a href="#">Add to cart</a>
+                                        </span>
+                                    </div>
+                                    <div class="favorit-items">
+                                        <span class="flaticon-heart"></span>
+                                    </div>
+                                </div>
+                                <div class="popular-caption">
+                                    <h3><a href="product_details.html"><?php echo $product['title'] ?></a></h3>
+                                    <span><?php echo number_format($product['price']) ?> VNĐ</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="popular-caption">
-                            <h3><a href="product_details.html">Thermo Ball Etip Gloves</a></h3>
-                            <span>$ 45,743</span>
-                        </div>
+                        <?php endforeach;?>
                     </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-popular-items mb-50 text-center">
-                        <div class="popular-img">
-                            <img src="assets/img/gallery/popular3.png" alt="">
-                            <div class="img-cap">
-                                <span>Add to cart</span>
-                            </div>
-                            <div class="favorit-items">
-                                <span class="flaticon-heart"></span>
-                            </div>
-                        </div>
-                        <div class="popular-caption">
-                            <h3><a href="product_details.html">Thermo Ball Etip Gloves</a></h3>
-                            <span>$ 45,743</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-popular-items mb-50 text-center">
-                        <div class="popular-img">
-                            <img src="assets/img/gallery/popular4.png" alt="">
-                            <div class="img-cap">
-                                <span>Add to cart</span>
-                            </div>
-                            <div class="favorit-items">
-                                <span class="flaticon-heart"></span>
-                            </div>
-                        </div>
-                        <div class="popular-caption">
-                            <h3><a href="product_details.html">Thermo Ball Etip Gloves</a></h3>
-                            <span>$ 45,743</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-popular-items mb-50 text-center">
-                        <div class="popular-img">
-                            <img src="assets/img/gallery/popular5.png" alt="">
-                            <div class="img-cap">
-                                <span>Add to cart</span>
-                            </div>
-                            <div class="favorit-items">
-                                <span class="flaticon-heart"></span>
-                            </div>
-                        </div>
-                        <div class="popular-caption">
-                            <h3><a href="product_details.html">Thermo Ball Etip Gloves</a></h3>
-                            <span>$ 45,743</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-popular-items mb-50 text-center">
-                        <div class="popular-img">
-                            <img src="assets/img/gallery/popular6.png" alt="">
-                            <div class="img-cap">
-                                <span>Add to cart</span>
-                            </div>
-                            <div class="favorit-items">
-                                <span class="flaticon-heart"></span>
-                            </div>
-                        </div>
-                        <div class="popular-caption">
-                            <h3><a href="product_details.html">Thermo Ball Etip Gloves</a></h3>
-                            <span>$ 45,743</span>
-                        </div>
-                    </div>
-                </div>
+                <?php endif; ?>
             </div>
             <!-- Button -->
             <div class="row justify-content-center">
                 <div class="room-btn pt-70">
-                    <a href="catagori.html" class="btn view-btn1">View More Products</a>
+                    <a href="catagory.html" class="btn view-btn1">View More Products</a>
                 </div>
             </div>
         </div>
     </div>
     <!-- Popular Items End -->
-    <!--? Watch Choice  Start-->
-    <div class="watch-area section-padding30">
-        <div class="container">
-            <div class="row align-items-center justify-content-between padding-130">
-                <div class="col-lg-5 col-md-6">
-                    <div class="watch-details mb-40">
-                        <h2>Watch of Choice</h2>
-                        <p>Enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
-                        <a href="shop.html" class="btn">Show Watches</a>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-10">
-                    <div class="choice-watch-img mb-40">
-                        <img src="assets/img/gallery/choce_watch1.png" alt="">
-                    </div>
+<!--? Watch Choice  Start-->
+<div class="watch-area section-padding30">
+    <div class="container">
+        <div class="row align-items-center justify-content-between padding-130">
+            <div class="col-lg-5 col-md-6">
+                <div class="watch-details mb-40">
+                    <h2>Watch of Choice</h2>
+                    <p>Enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
+                    <a href="shop.html" class="btn">Show Watches</a>
                 </div>
             </div>
-            <div class="row align-items-center justify-content-between">
-                <div class="col-lg-6 col-md-6 col-sm-10">
-                    <div class="choice-watch-img mb-40">
-                        <img src="assets/img/gallery/choce_watch2.png" alt="">
-                    </div>
+            <div class="col-lg-6 col-md-6 col-sm-10">
+                <div class="choice-watch-img mb-40">
+                    <img src="assets/img/gallery/choce_watch1.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center justify-content-between">
+            <div class="col-lg-6 col-md-6 col-sm-10">
+                <div class="choice-watch-img mb-40">
+                    <img src="assets/img/gallery/choce_watch2.png" alt="">
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-6">
+                <div class="watch-details mb-40">
+                    <h2>Watch of Choice</h2>
+                    <p>Enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
+                    <a href="shop.html" class="btn">Show Watches</a>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Watch Choice  End-->
+</div>
+<!-- Watch Choice  End-->
     <!--? Shop Method Start-->
     <div class="shop-method-area">
         <div class="container">

@@ -3,18 +3,22 @@
 # File rất nhạy cảm, trang có thể die nếu chỉnh sửa file này k đúng
 # Các file mà không có tên file, mặc định sẽ ẩn trên Window
 RewriteEngine On
-# Khai báo các rule theo dạng sau:
-# RewriteRule <url-thân-thiện url-mvc>
-# Rewrite URL cho trang Giỏ hàng của bạn
-RewriteRule gio-hang-cua-ban.html index.php?controller=cart&action=index
+
+RewriteRule cart.html index.php?controller=cart&action=index
 #/index.php?controller=product&action=detail&id=3
 # - Rewrite cho trang chi tiết sản phẩm:
 # chi-tiet-san-pham/3
 # Với tham số động bắt buộc phải dùng biểu thức chính quy - Regex
 RewriteRule chi-tiet-san-pham/([0-9]{1,}) index.php?controller=product&action=detail&id=$1
 
-RewriteRule cart.html index.php?controller=cart&action=index
-
 RewriteRule login.html index.php?controller=user&action=login
 
 RewriteRule register.html index.php?controller=user&action=register
+
+RewriteRule blog.html index.php?controller=blog&action=blog
+
+RewriteRule blog-detail.html index.php?controller=blog&action=blogdetail
+
+RewriteRule contact.html index.php?controller=contact&action=index
+
+RewriteRule payment.html index.php?controller=payment&action=order

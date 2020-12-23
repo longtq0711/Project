@@ -4,41 +4,29 @@ require_once 'models/Product.php';
 
 class CartController extends Controller
 {
-    //Xử lý thêm sản phẩm vào giỏ
+    public function delete(){
+        $id = $_GET['id'];
+        unset($_SESSION['cart'][$id]);
+        $_SESSION['success'] = "Delete succesfully";
+        header('Location: cart.html');
+        exit();
+    }
+
     public function add(){
-        //echo "abcdef";
-        //Debug các thông tin gửi lên
         echo "<pre>";
         print_r($_GET);
         echo "</pre>";
-        //Check nếu không tồn tại tham số id truyền thì báo lỗi
 
-        //Giỏ hàng
-        // + Có rất nhiều cơ chế lưu trữ giỏ hàng khác nhau
-        // Sử dụng session, với giỏ hàng hiện tại sẽ có cấu trúc như sau:
-        // Mỗi 1 phần tử của giỏ hàng sẽ có dạng: product_id => [title, price, avatar, quantity]
         $product_id = $_GET['id'];
-        // Lấy thông tin sản phẩm dựa vào id
         $product_model = new Product();
         $product = $product_model -> getProductByID($product_id);
-//        echo "<pre>";
-//        print_r($product);
-//        echo "</pre>";
         $cart_item = [
             'name' => $product['title'],
             'price' => $product['price'],
             'avatar' => $product['avatar'],
-            //Mặc định mỗi lần thêm vào giỏ sẽ thêm 1 sản phẩm
             'quantity' => 1
         ];
-        //Logic thêm vào giỏ hàng
-        // + Tạo 1 session để lưu giỏ hàng $_SESSION['cart']
-        // + Nếu sp thêm chưa tồn tại trong giỏ hàng -> thêm phần tử mới cho mảng session giỏ hàng
-        // + Nếu sp thêm đã tồn tại trong giỏ -> chỉ cập nhật số lượng sản phẩm đó tăng lên 1
-        // product_it => [title, price, avatar, quantity]
 
-        //XỬ LÝ
-        // + Nếu giỏ hàng chưa hề tồn tại, thì tạo session và thêm sản phẩm vào giỏ
         if (!isset($_SESSION['cart'])) {
             $_SESSION['cart'][$product_id] = $cart_item;
         } else {
@@ -53,13 +41,18 @@ class CartController extends Controller
 
     }
 
-    //Giỏ hàng của bạn
-    //index.php?controller=cart&action=index
     public function index(){
+        if(isset($_POST['submit'])){
+            foreach($_SESSION['cart'] AS $product_id => $cart) {
+                $_SESSION['cart'][$product_id]['quantity'] = $_POST[$product_id];
+            }
+//            if ($_POST['method'] == 1)
+            $_SESSION['success'] = "Update cart successfully";
+        }
         //Lấy ra nội dung view
         $this->content = $this->render('views/carts/index.php');
         //Gọi layout để hiển thị ra view vừa lấy được
         require_once 'views/layouts/main.php';
-
     }
+
 }

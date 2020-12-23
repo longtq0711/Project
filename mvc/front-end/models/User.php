@@ -8,11 +8,11 @@ class User extends Model
 
     public function registerUser()
     {
-        $sql_insert = "INSERT INTO users(username, password) VALUES(:username, :password)";
+        $sql_insert = "INSERT INTO users(username, password, roles) VALUES(:username, :password, 0)";
         $obj_insert = $this->connection->prepare($sql_insert);
         $inserts = [
             ':username' => $this->username,
-            ':password' => $this->password
+            ':password' => $this->password,
         ];
         $is_insert = $obj_insert->execute($inserts);
         return $is_insert;
