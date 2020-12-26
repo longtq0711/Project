@@ -1,25 +1,30 @@
-<?php
-//views/users/register.php
-?>
-<h1>Form đăng kí</h1>
-<div class="container">
-    <form action="" method="post">
+
+<div class="container" style="max-width: 500px">
+    <form method="post" enctype=multipart/form-data action="">
+        <h2>Form register</h2>
         <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" id="username" name="username" class="form-control">
+            <input type="text" name="username" value="" id="username" class="form-control"/>
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" class="form-control">
+            <input type="password" name="password" value="" id="password" class="form-control"/>
         </div>
         <div class="form-group">
-            <label for="confirm-password">Confirm password</label>
-            <input type="password" id="password_confirm" name="password_confirm" class="form-control">
+            <label for="password-confirm">Nhập lại password</label>
+            <input type="password" name="password_confirm" value="" id="password-confirm" class="form-control"/>
         </div>
-        <input type="submit" name="submit" value="Đăng ký" class="btn btn-primary">
-        <p>
-            Đã có tài khoản, <a href="index.php?controller=user&action=login">Đăng nhập</a>
-        </p>
-    </form>
 
+        <div class="form-group">
+            <label for="avatar">Avatar upload:</label>
+            <input type="file" class="form-control" name="image" id="image"/>
+        </div>
+        <div class="form-group">
+            <input type="submit" name="submit" value="Đăng ký" class="btn btn-primary"/>
+            <p>
+                Đã có tài khoản, <a href="index.php?controller=login&action=login">Đăng nhập</a> ngay
+            </p>
+        </div>
+
+    </form>
 </div>

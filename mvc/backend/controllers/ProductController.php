@@ -9,7 +9,31 @@ class ProductController extends Controller
   public function index()
   {
     $product_model = new Product();
-    $products = $product_model->getAll();
+
+    //lấy tổng số bản ghi đang có trong bảng products
+    $count_total = $product_model->countTotal();
+    //        xử lý phân trang
+    $query_additional = '';
+    if (isset($_GET['title'])) {
+      $query_additional .= '&title=' . $_GET['title'];
+    }
+    if (isset($_GET['category_id'])) {
+      $query_additional .= '&category_id=' . $_GET['category_id'];
+    }
+    $arr_params = [
+        'total' => $count_total,
+        'limit' => 10,
+        'query_string' => 'page',
+        'controller' => 'product',
+        'action' => 'index',
+        'full_mode' => false,
+        'query_additional' => $query_additional,
+        'page' => isset($_GET['page']) ? $_GET['page'] : 1
+    ];
+    $products = $product_model->getAllPagination($arr_params);
+    $pagination = new Pagination($arr_params);
+
+    $pages = $pagination->getPagination();
 
     //lấy danh sách category đang có trên hệ thống để phục vụ cho search
     $category_model = new Category();
@@ -18,6 +42,7 @@ class ProductController extends Controller
     $this->content = $this->render('views/products/index.php', [
         'products' => $products,
         'categories' => $categories,
+        'pages' => $pages,
     ]);
     require_once 'views/layouts/main.php';
   }
@@ -42,7 +67,7 @@ class ProductController extends Controller
       } else if ($_FILES['avatar']['error'] == 0) {
         //validate khi có file upload lên thì bắt buộc phải là ảnh và dung lượng không quá 2 Mb
         $extension = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-         $extension = strtolower($extension);
+        $extension = strtolower($extension);
         $arr_extension = ['jpg', 'jpeg', 'png', 'gif'];
 
         $file_size_mb = $_FILES['avatar']['size'] / 1024 / 1024;
@@ -61,7 +86,7 @@ class ProductController extends Controller
         $filename = '';
         //xử lý upload file nếu có
         if ($_FILES['avatar']['error'] == 0) {
-          $dir_uploads = 'assets/uploads';
+          $dir_uploads = __DIR__ . '/../assets/uploads';
           if (!file_exists($dir_uploads)) {
             mkdir($dir_uploads);
           }
@@ -169,7 +194,7 @@ class ProductController extends Controller
         $filename = $product['avatar'];
         //xử lý upload file nếu có
         if ($_FILES['avatar']['error'] == 0) {
-          $dir_uploads = 'assets/uploads';
+          $dir_uploads = __DIR__ . '/../assets/uploads';
           //xóa file cũ, thêm @ vào trước hàm unlink để tránh báo lỗi khi xóa file ko tồn tại
           @unlink($dir_uploads . '/' . $filename);
           if (!file_exists($dir_uploads)) {

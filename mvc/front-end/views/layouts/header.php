@@ -26,14 +26,21 @@
                         <nav>
                             <ul id="navigation">
                                 <li><a href="index.php">Home</a></li>
-                                <li><a href="shop.html">shop</a></li>
-                                <li><a href="about/about.php">about</a></li>
-                                <li class="hot"><a href="#">Latest</a>
+                                <li><a href="shop.html">shop</a>
+                                    <ul class="submenu">
+                                        <li><a href="men_watch.html">Men Watch</a></li>
+                                        <li><a href="women_watch.html">Women Watch</a></li>
+                                        <li><a href="women_watch.html">Newest Watch</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="about/about.php">about</a>
+<!--                                <li class="hot"><a href="#">Latest</a>-->
                                     <ul class="submenu">
                                         <li><a href="products/shop.php"> Product list</a></li>
                                         <li><a href="product_detail/.html"> Product Details</a></li>
                                     </ul>
                                 </li>
+                                <li></li>
                                 <li><a href="blog.html">Blog</a>
                                     <ul class="submenu">
                                         <li><a href="blog.html">Blog</a></li>
@@ -52,7 +59,32 @@
                                     <span class="flaticon-search"></span>
                                 </div>
                             </li>
-                            <li> <a href="login.html"><span class="flaticon-user"></span></a></li>
+                            <li>
+                                <?php if(isset($_SESSION['user'])) :?>
+                                    <a type="button" class="dropdown-item" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="flaticon-user">
+                                    </a>
+                                    <div class="dropdown-menu dropdown-primary">
+                                        <a class="dropdown-item" style="font-size: 16px;
+                                            font-family: 'Josefin Sans',sans-serif;
+                                        color: #141517;
+                                        font-weight: 600;" href="profile.html">Profile</a>
+                                        <a class="dropdown-item" style="font-size: 16px;
+                                            font-family: 'Josefin Sans',sans-serif;
+                                        color: #141517;
+                                        font-weight: 600;" href="logout.html">Log out</a>
+                                    </div>
+                                    <style>
+                                        $('.dropdown-item'){
+
+                                        }
+                                    </style>
+
+<!--                                <a class="dropdown-item" href="profile.html"><span class="flaticon-user"></span></a>-->
+                                <?php else:?>
+                                <a href="login.html"><span class="flaticon-user"></span></a>
+                                <?php endif;?>
+                            </li>
                             <li>
                                 <a href="cart.html" class="cart-link">
                                     <?php

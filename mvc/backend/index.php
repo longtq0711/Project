@@ -2,11 +2,21 @@
 session_start();
 date_default_timezone_set("Asia/Ho_Chi_Minh");
 
+//mục đích của file index.php gốc của ứng dụng
+//cần phải xử lý url trên trình duyệt để nhúng được class
+//controller tương ứng, sau đó khởi tạo đối tượng từ class
+//vừa nhúng, và gọi action tương ứng
 
+//theo mô hình mvc, url của bạn đang có dạng là:
+//index.php?controller=book&action=list
+//lấy ra tham số controller và action từ trình duyệt
 $controller = isset($_GET['controller']) ? $_GET['controller'] : 'category';
 $action = isset($_GET['action']) ? $_GET['action'] : 'index';
 
-
+//giả sử url đang là:
+//index.php?controller=book&action=create
+//$controller=book
+//$action=create
 
 //Nhúng được file BookController.php vào
 $controller = ucfirst($controller); //Book

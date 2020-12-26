@@ -46,9 +46,14 @@ $(document).ready(function () {
     $('#province').change(function() {
         // event.preventDefault();
         var provinceID = $('#province').val();
-        console.log(provinceID);
+        // console.log(provinceID);
         $.post('views/payments/district.php',{'provinceid':provinceID},function(data) {
+            // console.log(data);
+            // $('#district').css({display:"block"});
+            // $('select').niceSelect('destroy');
             $('#district').html(data);
+            // $('select').niceSelect('update');
         },'text');
     })
+
 });

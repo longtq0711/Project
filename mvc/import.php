@@ -7,7 +7,7 @@ echo "<pre>";
 print_r($arr);
 echo "</pre>";
 foreach ($arr AS $value){
-    echo $value->image;
+    echo $value->name;
     echo "<br/>";
 }
 $seo_description="";

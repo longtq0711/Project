@@ -73,6 +73,7 @@ class LoginController
             $username = $_POST['username'];
             $password = $_POST['password'];
             $password_confirm = $_POST['password_confirm'];
+            $avatar = $_FILES['image']['name'];
             $user = $user_model->getUserByUsername($username);
             //check validate
             if (empty($username) || empty($password) || empty($password_confirm)) {
@@ -82,13 +83,38 @@ class LoginController
             } else if (!empty($user)) {
                 $this->error = 'Username này đã tồn tại';
             }
+            else if ($_FILES['image']['error'] == 0) {
+                //validate khi có file upload lên thì bắt buộc phải là ảnh và dung lượng không quá 2 Mb
+                $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+                $extension = strtolower($extension);
+                $arr_extension = ['jpg', 'jpeg', 'png', 'gif'];
+
+                $file_size_mb = $_FILES['image']['size'] / 1024 / 1024;
+                //làm tròn theo đơn vị thập phân
+                $file_size_mb = round($file_size_mb, 2);
+
+                if (!in_array($extension, $arr_extension)) {
+                    $this->error = 'Cần upload file định dạng ảnh';
+                } else if ($file_size_mb > 2) {
+                    $this->error = 'File upload không được quá 2MB';
+                }
+            }
             //xử lý lưu dữ liệu khi không có lỗi
             if (empty($this->error)) {
-
+                if ($_FILES['image']['error'] == 0) {
+                    $dir_uploads = __DIR__ . '/../assets/uploads';
+                    if (!file_exists($dir_uploads)) {
+                        mkdir($dir_uploads);
+                    }
+                    //tạo tên file theo 1 chuỗi ngẫu nhiên để tránh upload file trùng lặp
+                    $filename = $_FILES['image']['name'];
+                    move_uploaded_file($_FILES['image']['tmp_name'], $dir_uploads . '/' . $filename);
+                }
                 $user_model->username = $username;
                 //chú ý password khi lưu vào bảng users sẽ được mã hóa md5 trước khi lưu
                 //do đang sử dụng cơ chế mã hóa này cho quy trình login
                 $user_model->password = md5($password);
+                $user_model->avatar = $avatar;
                 $user_model->status = 1;
                 $is_insert = $user_model->insertRegister();
                 if ($is_insert) {

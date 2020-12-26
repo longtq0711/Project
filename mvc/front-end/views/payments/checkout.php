@@ -1,4 +1,11 @@
-
+<?php
+if (isset($_SESSION['user'])){
+$fullname = $_SESSION['user']['fullname'];
+$email = $_SESSION['user']['email'];
+$phone = $_SESSION['user']['phone'];
+$address = $_SESSION['user']['address'];
+}
+?>
     <div class="slider-area ">
         <div class="single-slider slider-height2 d-flex align-items-center">
             <div class="container">
@@ -64,50 +71,53 @@
                     <div class="col-lg-8">
                         <h3>Billing Details</h3>
                         <form class="row contact_form" action="#" method="post" novalidate="novalidate">
+
                             <div class="col-md-12 form-group p_star">
                                 <label>Fullname</label>
-                                <input type="text" class="form-control" id="name" name="fullname" />
+                                <input value="<?php echo $fullname;?>" type="text" class="form-control" id="name" name="fullname" />
                             </div>
                             <div class="col-md-12 form-group p_star">
                                 <label>Mobile</label>
-                                <input type="number" class="form-control" id="number" name="mobile" />
+                                <input value="<?php echo $phone;?>" type="number" class="form-control" id="number" name="mobile" />
                             </div>
                             <div class="col-md-12 form-group p_star">
                                 <label>Email</label>
-                                <input type="email" class="form-control" id="email" name="email" />
+                                <input value="<?php echo $email;?>" type="email" class="form-control" id="email" name="email" />
                             </div>
-                            <div class="col-md-12 form-group p_star">
-                                <select class="" name="province" id="province">
-                                    <option value="">Province</option>
-                                    <?php
-                                        include "connection.php";
-                                        $sql = "SELECT * FROM province";
-                                        $query = $connection->prepare($sql);
-                                        $query->execute();
-                                        $result = $query->fetchAll(PDO::FETCH_ASSOC);
-                                        foreach ($result AS $key){
-                                        echo '<option value="'.$key['id'].'">'.$key['_name'].'</option>';}
-                                    ?>
-                                </select>
-                                <style>
-                                    #province{
-                                        display:block !important;
-                                    }
-                                </style>
-                            </div>
-                            <div class="col-md-12 form-group p_star">
-                                <select class="country_select" name="district" id="district">
-                                    <option value="">District</option>
-                                </select>
-                            </div>
-                            <div class="col-md-12 form-group p_star">
-                                <select class="country_select" name="ward" id="ward">
-                                    <option value="">Ward</option>
-                                </select>
-                            </div>
+<!--                            <div class="col-md-12 form-group p_star">-->
+<!--                                <select class="form-control" id="province">-->
+<!--                                    <option value="">Province</option>-->
+<!--                                    --><?php
+//                                        include "connection.php";
+//                                        $sql = "SELECT * FROM province";
+//                                        $query = $connection->prepare($sql);
+//                                        $query->execute();
+//                                        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+//                                        foreach ($result AS $key){
+//                                        echo '<option value="'.$key['id'].'">'.$key['_name'].'</option>';}
+//                                    ?>
+<!--                                </select>-->
+<!---->
+<!--                            </div>-->
+<!--                            <div class="col-md-12 form-group p_star">-->
+<!--                                <select class="form-control" id="district">-->
+<!--                                    <option value="">District</option>-->
+<!--                                </select>-->
+<!--                                <select class="form-control">-->
+<!--                                    <option value="">Ward</option>-->
+<!--                                </select>-->
+<!--                                <style>-->
+<!--                                    /*#district{*/-->
+<!--                                        /*!*display: block !important;*!*/-->
+<!--                                    /*}*/-->
+<!--                                </style>-->
+<!--                            </div>-->
+<!--                            <div class="col-md-12 form-group p_star">-->
+<!---->
+<!--                            </div>-->
                             <div class="col-md-12 form-group p_star">
                                 <label>Address</label>
-                                <input type="text" class="form-control" id="address" name="address" />
+                                <input value="<?php echo $address;?>" type="text" class="form-control" id="address" name="address" />
                             </div>
                             <div class="col-md-12 form-group p_star">
                                 <label>Note</label>

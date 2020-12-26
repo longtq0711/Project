@@ -1,6 +1,5 @@
-<select class="country_select" name="district">
-<option value="">District</option>
-
+<select class="form-control" id="district">
+    <option value="">District</option>
 <?php
     include "connection.php";
     $sql = "SELECT * FROM district WHERE _province_id =". $_POST['provinceid'];

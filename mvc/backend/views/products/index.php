@@ -1,6 +1,39 @@
 <?php
 require_once 'helpers/Helper.php';
 ?>
+    <style>
+         pre{
+         display: none;
+    </style>
+<form action="" method="GET">
+    <div class="form-group">
+        <label for="title">Nhập title</label>
+        <input type="text" name="title" value="<?php echo isset($_GET['title']) ? $_GET['title'] : '' ?>" id="title"
+               class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label for="title">Chọn danh mục</label>
+        <select name="category_id" class="form-control">
+            <?php foreach ($categories as $category):
+                //giữ trạng thái selected của category sau khi chọn dựa vào
+//                tham số category_id trên trình duyệt
+                $selected = '';
+                if (isset($_GET['category_id']) && $category['id'] == $_GET['category_id']) {
+                    $selected = 'selected';
+                }
+                ?>
+                <option value="<?php echo $category['id'] ?>" <?php echo $selected; ?>>
+                    <?php echo $category['name'] ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    <input type="hidden" name="controller" value="product"/>
+    <input type="hidden" name="action" value="index"/>
+    <input type="submit" name="search" value="Tìm kiếm" class="btn btn-primary"/>
+    <a href="index.php?controller=product" class="btn btn-default">Xóa filter</a>
+</form>
+
 
 <h2>Danh sách sản phẩm</h2>
     <a href="index.php?controller=product&action=create" class="btn btn-success">
@@ -27,7 +60,7 @@ require_once 'helpers/Helper.php';
                 <td><?php echo $product['title'] ?></td>
                 <td>
                     <?php if (!empty($product['avatar'])): ?>
-                        <img height="80" src="assets/uploads/<?php echo $product['avatar'] ?>"/>
+                        <img height="80" src="<?php echo $product['avatar'] ?>"/>
                     <?php endif; ?>
                 </td>
                 <td><?php echo number_format($product['price']) ?></td>
@@ -55,3 +88,4 @@ require_once 'helpers/Helper.php';
         </tr>
     <?php endif; ?>
 </table>
+<?php echo $pages; ?>

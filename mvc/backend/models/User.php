@@ -41,13 +41,12 @@ class User extends Model {
         $page = $params['page'];
         $start = ($page - 1) * $limit;
         $obj_select = $this->connection
-            ->prepare("SELECT * FROM users WHERE TRUE $this->str_search
+            ->prepare("SELECT * FROM users WHERE TRUE $this->str_search AND roles = 0
               ORDER BY created_at DESC
               LIMIT $start, $limit");
 
         $obj_select->execute();
         $users = $obj_select->fetchAll(PDO::FETCH_ASSOC);
-
         return $users;
     }
 
@@ -136,11 +135,12 @@ VALUES(:username, :password, :first_name, :last_name, :phone, :address, :email, 
 
     public function insertRegister() {
         $obj_insert = $this->connection
-            ->prepare("INSERT INTO users(username, password, status)
-VALUES(:username, :password, :status)");
+            ->prepare("INSERT INTO users(username, roles, password, avatar, status)
+VALUES(:username, 1, :password, :avatar, :status)");
         $arr_insert = [
             ':username' => $this->username,
             ':password' => $this->password,
+            ':avatar'   => $this->avatar,
             ':status' => $this->status,
         ];
         return $obj_insert->execute($arr_insert);

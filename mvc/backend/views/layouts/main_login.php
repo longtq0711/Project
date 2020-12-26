@@ -19,38 +19,41 @@
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
-<!--    Vào file header.php, copy đoạn hiển thị message lỗi và thành công sau-->
-<section class="content-header">
-<?php if (isset($_SESSION['error'])): ?>
-    <div class="alert alert-danger">
-        <?php
-        echo $_SESSION['error'];
-        unset($_SESSION['error']);
-        ?>
-    </div>
-<?php endif; ?>
+<body>
+<div class="wrapper container" style="max-width: 500px">
 
-<?php if (!empty($this->error)): ?>
-    <div class="alert alert-danger">
-        <?php
-        echo $this->error;
-        ?>
-    </div>
-<?php endif; ?>
+    <section class="content-header">
+        <?php if (isset($_SESSION['error'])): ?>
+            <div class="alert alert-danger">
+                <?php
+                echo $_SESSION['error'];
+                unset($_SESSION['error']);
+                ?>
+            </div>
+        <?php endif; ?>
 
-<?php if (isset($_SESSION['success'])): ?>
-    <div class="alert alert-success">
-        <?php
-        echo $_SESSION['success'];
-        unset($_SESSION['success']);
-        ?>
-    </div>
-<?php endif; ?>
-<!--        <div class="alert alert-danger">Lỗi validate</div>-->
-<!--        <p class="alert alert-success">Thành công</p>-->
-</section>
-    <?= $this->content;?>
+        <?php if (!empty($this->error)): ?>
+            <div class="alert alert-danger">
+                <?php
+                echo $this->error;
+                ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if (isset($_SESSION['success'])): ?>
+            <div class="alert alert-success">
+                <?php
+                echo $_SESSION['success'];
+                unset($_SESSION['success']);
+                ?>
+            </div>
+        <?php endif; ?>
+        <!--        <div class="alert alert-danger">Lỗi validate</div>-->
+        <!--        <p class="alert alert-success">Thành công</p>-->
+    </section>
+
+    <?php echo $this->content; ?>
+</div>
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
@@ -61,9 +64,5 @@
 <script src="assets/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="assets/js/adminlte.min.js"></script>
-<!--CKEditor -->
-<script src="assets/ckeditor/ckeditor.js"></script>
-<!--My SCRIPT-->
-<script src="assets/js/script.js"></script>
 </body>
 </html>

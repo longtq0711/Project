@@ -85,7 +85,7 @@ class CategoryController extends Controller
       if (empty($this->error)) {
         //xử lý upload ảnh nếu có
         if ($avatar_files['error'] == 0) {
-          $dir_uploads = 'assets/uploads';
+          $dir_uploads = __DIR__ . '/../assets/uploads';
           if (!file_exists($dir_uploads)) {
             mkdir($dir_uploads);
           }
@@ -166,7 +166,7 @@ class CategoryController extends Controller
         if ($avatar_files['error'] == 0) {
           //xóa file ảnh cũ đi
 
-          $dir_uploads = 'assets/uploads';
+          $dir_uploads = __DIR__ . '/../assets/uploads';
           if (!file_exists($dir_uploads)) {
             mkdir($dir_uploads);
           }
