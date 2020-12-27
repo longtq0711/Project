@@ -24,7 +24,18 @@ class Product extends Model {
     $products = $obj_select->fetchAll(PDO::FETCH_ASSOC);
     return $products;
   }
-
+    public function getAllPagination($arr_params){
+        $limit = $arr_params['limit'];
+        $page = $arr_params['page'];
+        $start = ($page - 1) * $limit;
+        $obj_select = $this->connection->prepare("SELECT products.*, categories.name 
+          AS category_name FROM products
+          INNER JOIN categories ON products.category_id = categories.id
+          WHERE products.status = 1 LIMIT $start, $limit");
+        $obj_select->execute();
+        $products = $obj_select->fetchAll();
+        return $products;
+    }
   /**
    * Lấy thông tin sản phẩm theo id
    * @param $id
@@ -65,6 +76,11 @@ class Product extends Model {
       // - Trả về mảng 1 phần tử duy nhất
       $product = $obj_select_one->fetch(PDO::FETCH_ASSOC);
       return $product;
+  }
+  public function countTotal(){
+      $obj_select = $this->connection->prepare("SELECT COUNT(id) FROM products");
+      $obj_select->execute();
+      return $obj_select->fetchColumn();
   }
 }
 

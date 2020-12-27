@@ -40,18 +40,25 @@ class ProductController extends Controller {
         $params['price'] = $str_price;
       }
     }
-
-    $params_pagination = [
-      'total' => 5,
-      'limit' => 1,
-      'full_mode' => FALSE,
-    ];
-    //xử lý phân trang
-//    $pagination_model = new Pagination($params_pagination);
-//    $pagination = $pagination_model->getPagination();
-    //get products
     $product_model = new Product();
-    $products = $product_model->getProduct($params);
+    $count = $product_model->countTotal();
+    $params_pagination = [
+      'total' => $count,
+      'limit' => 9,
+      'controller' => 'product',
+      'action' => 'showAll',
+      'page' =>  isset($_GET['page']) ? $_GET['page'] : 1,
+      'full_mode' => FALSE
+    ];
+//    echo"<pre>";
+//    print_r($params_pagination);
+//    echo"</pre>";
+    $products = $product_model->getAllPagination($params_pagination);
+    //xử lý phân trang
+    $pagination_model = new Pagination($params_pagination);
+    $pagination = $pagination_model->getPagination();
+    //get products
+
 
     //get categories để filter
     $category_model = new Category();
@@ -59,8 +66,8 @@ class ProductController extends Controller {
 
     $this->content = $this->render('views/products/shop.php', [
       'products' => $products,
-      'categories' => $categories
-//      'pagination' => $pagination,
+      'categories' => $categories,
+      'pagination' => $pagination
     ]);
 
     require_once 'views/layouts/main.php';

@@ -16,9 +16,7 @@
     <!-- Latest Products Start -->
     <section class="popular-items latest-padding">
         <div class="container">
-            <?php if(!empty($products)):
-
-                ?>
+            <?php if(!empty($products)): ?>
 <!--            <div class="tab-content" id="nav-tabContent">-->
 <!--                <!-- card one -->
 <!--                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">-->
@@ -44,6 +42,9 @@
                         <?php endforeach;?>
                     </div>
             <?php endif;?>
+        </div>
+        <div class="b-pagination-outer">
+        <?php echo $pagination; ?>
         </div>
     </section>
     <!-- Latest Products End -->

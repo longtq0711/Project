@@ -74,31 +74,31 @@
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
-                        <tr class="shipping_area">
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <h5>Shipping</h5>
-                            </td>
-                            <td>
-                                <div class="shipping_box">
-                                    <div class="form-check">
-                                        <label style="margin-right: 40px;" class="form-check-label" for="exampleRadios1">
-                                            Fast Delivery: 40,000VNĐ
-                                        </label>
-                                        <input name="method" class="form-check-input" type="radio"  id="exampleRadios1" value="1" checked>
-
-                                    </div>
-                                    <div class="form-check">
-                                        <label style="margin-right: 40px;" class="form-check-label" for="exampleRadios2">
-                                            Normal Delivery: 20,000VNĐ
-                                        </label>
-                                        <input name="method" class="form-check-input" type="radio" id="exampleRadios2" value="0">
-
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
+<!--                        <tr class="shipping_area">-->
+<!--                            <td></td>-->
+<!--                            <td></td>-->
+<!--                            <td>-->
+<!--                                <h5>Shipping</h5>-->
+<!--                            </td>-->
+<!--                            <td>-->
+<!--                                <div class="shipping_box">-->
+<!--                                    <div class="form-check">-->
+<!--                                        <label style="margin-right: 40px;" class="form-check-label" for="exampleRadios1">-->
+<!--                                            Fast Delivery: 40,000VNĐ-->
+<!--                                        </label>-->
+<!--                                        <input name="method" class="form-check-input" type="radio"  id="exampleRadios1" value="1" checked>-->
+<!--                                        <label style="font-size: 14px; color: #415094; font-family: 'Playfair Display',serif"-->
+<!--                                               for="r1"><span></span>Fast delivery: 40,000VNĐ</label>-->
+<!--                                        <input type="radio" id="r1" name="method" checked value="40000" />-->
+<!--                                    </div>-->
+<!--                                    <div class="form-check">-->
+<!--                                        <label style="font-size: 14px; color: #415094; font-family: 'Playfair Display',serif"-->
+<!--                                               for="r1"><span></span>Normal delivery: 20,000VNĐ</label>-->
+<!--                                        <input type="radio" id="r1" name="method" value="20000" />-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </td>-->
+<!--                        </tr>-->
                         <tr class="bottom_button">
                             <td><input type="submit" class="btn btn-primary" name="submit" value="Update Cart"></td>
                             <td></td>
@@ -108,7 +108,13 @@
 //                                    echo "<pre>";
 //                                    print_r($_SESSION['cart']);
 //                                    echo "</pre>";
-                                    echo number_format($total_order);?>VNĐ</h2>
+
+                                     if(isset($_POST['method'])){
+                                         echo number_format($total_order + $_POST['method']);
+                                     }
+                                     else echo number_format($total_order + 40000);
+
+                                    ?>VNĐ</h2>
                             </td>
                         </tr>
 
@@ -116,7 +122,7 @@
                     </table>
                     </form>
                     <div class="checkout_btn_inner float-right">
-                        <a class="btn_1" href="#">Continue Shopping</a>
+                        <a class="btn_1" href="shop.html">Continue Shopping</a>
                         <a class="btn_1 checkout_btn_1" href="payment.html">Proceed to checkout</a>
                     </div>
                 </div>

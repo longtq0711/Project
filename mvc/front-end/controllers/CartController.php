@@ -46,8 +46,7 @@ class CartController extends Controller
             foreach($_SESSION['cart'] AS $product_id => $cart) {
                 $_SESSION['cart'][$product_id]['quantity'] = $_POST[$product_id];
             }
-//            if ($_POST['method'] == 1)
-            $_SESSION['success'] = "Update cart successfully";
+                $_SESSION['success'] = "Update cart successfully";
         }
         //Lấy ra nội dung view
         $this->content = $this->render('views/carts/index.php');
