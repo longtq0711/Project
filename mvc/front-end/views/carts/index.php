@@ -109,10 +109,7 @@
 //                                    print_r($_SESSION['cart']);
 //                                    echo "</pre>";
 
-                                     if(isset($_POST['method'])){
-                                         echo number_format($total_order + $_POST['method']);
-                                     }
-                                     else echo number_format($total_order + 40000);
+                                    echo number_format($total_order);
 
                                     ?>VNĐ</h2>
                             </td>

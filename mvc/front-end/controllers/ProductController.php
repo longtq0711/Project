@@ -81,10 +81,37 @@ class ProductController extends Controller {
       exit();
     }
 
-    $id = $_GET['id'];
-    $product_model = new Product();
-    $product = $product_model->getById($id);
-    $this->content = $this->render('views/products/products_detail.php', [
+//      echo"<pre>";
+//      print_r($_SESSION['cart']);
+//      echo"</pre>";
+//
+//    echo"<pre>";
+//    print_r($_POST);
+//    echo"</pre>";
+      $id = $_GET['id'];
+      $product_model = new Product();
+      $product = $product_model -> getProductByID($id);
+          $cart = [
+              'name' => $product['title'],
+              'price' => $product['price'],
+              'avatar' => $product['avatar'],
+              'quantity' => 0
+          ];
+
+      if (!isset($_SESSION['cart'])){
+          $_SESSION['cart'][$id] = $cart;
+      } else{
+          if(isset($_POST['quantity'])){
+              $_SESSION['success'] = "Add to cart successfully";
+              if (array_key_exists($id, $_SESSION['cart'])){
+                  $_SESSION['cart'][$id]['quantity']+= $_POST['quantity'];
+              } else $_SESSION['cart'][$id] = $cart;
+          } else { $_POST['quantity'] = 0;}
+      }
+
+
+
+      $this->content = $this->render('views/products/products_detail.php',[
       'product' => $product
     ]);
     require_once 'views/layouts/main.php';

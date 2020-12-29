@@ -16,45 +16,42 @@
     <!--================Single Product Area =================-->
     <div class="product_image_area">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-12">
-                    <div class="product_img_slide owl-carousel">
+            <div class="row d-flex justify-content-between">
+                <div class="col-lg-6">
+<!--                    <div class="product_img_slide owl-carousel">-->
                         <div class="single_product_img">
-                            <img src="../../assets/img/gallery/gallery1.png" alt="#" class="img-fluid">
+                            <img src="<?php echo $product['avatar'];?>" alt="#" class="img-fluid">
                         </div>
-                        <div class="single_product_img">
-                            <img src="../../assets/img/gallery/gallery01.png" alt="#" class="img-fluid">
-                        </div>
-                        <div class="single_product_img">
-                            <img src="../../assets/img/gallery/gallery1.png" alt="#" class="img-fluid">
-                        </div>
-                    </div>
+<!--                    </div>-->
                 </div>
-                <div class="col-lg-8">
-                    <div class="single_product_text text-center">
-                        <h3>Foam filling cotton slow <br>
-                            rebound pillows</h3>
-                        <img src="../../assets/img/gallery/new_product1.png" alt="">
+                <div class="col-lg-6">
+                    <form method="post" action="">
+                    <div class="single_product_text text-center" style="margin: 0 0 200px;">
+                        <h3><?php echo $product['title'];?></h3>
                         <p>
-                            Seamlessly empower fully researched growth strategies and interoperable internal or “organic” sources. Credibly innovate granular internal or “organic” sources whereas high standards in web-readiness. Credibly innovate granular internal or organic sources whereas high standards in web-readiness. Energistically scale future-proof core competencies vis-a-vis impactful experiences. Dramatically synthesize integrated schemas. with optimal networks.
+                            Credibly innovate granular internal or organic sources whereas high standards in web-readiness. Energistically scale future-proof core competencies vis-a-vis impactful experiences. Dramatically synthesize integrated schemas. with optimal networks.
                         </p>
 
-                        <div class="card_area">
+                        <div class="card_area" style="margin-top: 40px;">
                             <div class="product_count_area">
                                 <p>Quantity</p>
                                 <div class="product_count d-inline-block">
-                                    <span class="product_count_item inumber-decrement"> <i class="ti-minus"></i></span>
-                                    <input class="product_count_item input-number" type="text" value="1" min="0" max="10">
+                                    <span class="product_count_item inumber-decrement"><i class="ti-minus"></i></span>
+                                    <input name="quantity" class="product_count_item input-number" type="text" value="1" min="0" max="<?php echo $product['amount'];?>"/>
                                     <span class="product_count_item number-increment"> <i class="ti-plus"></i></span>
                                 </div>
-                                <p>$5</p>
+                                <p><?php echo number_format($product['price']);?></p>
                             </div>
-                            <div class="add_to_cart">
-                                <a href="#" class="btn_3">add to cart</a>
+                            <div class="add_to_cart" style="margin-top: 20px;">
+                                <button type="submit" name="submit" class="btn_3" style="margin-right: 20px;
+                                 cursor: pointer;
+                                ">add to cart</button>
                             </div>
                         </div>
                     </div>
+                    </form>
                 </div>
+
             </div>
         </div>
     </div>

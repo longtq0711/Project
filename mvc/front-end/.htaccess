@@ -3,13 +3,12 @@
 # File rất nhạy cảm, trang có thể die nếu chỉnh sửa file này k đúng
 # Các file mà không có tên file, mặc định sẽ ẩn trên Window
 RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
 
 RewriteRule cart.html index.php?controller=cart&action=index
-#/index.php?controller=product&action=detail&id=3
-# - Rewrite cho trang chi tiết sản phẩm:
-# chi-tiet-san-pham/3
-# Với tham số động bắt buộc phải dùng biểu thức chính quy - Regex
-RewriteRule product_detail/([0-9]{1,}).html index.php?controller=product&action=detail&id=$1
+
+RewriteRule products_detail/([0-9]{1,}).html index.php?controller=product&action=detail&id=$1
 
 RewriteRule login.html index.php?controller=user&action=login
 

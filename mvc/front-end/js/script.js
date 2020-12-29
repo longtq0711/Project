@@ -43,17 +43,43 @@ $(document).ready(function () {
             }
         });
     })
-    $('#province').change(function() {
-        // event.preventDefault();
-        var provinceID = $('#province').val();
-        // console.log(provinceID);
-        $.post('views/payments/district.php',{'provinceid':provinceID},function(data) {
-            // console.log(data);
-            // $('#district').css({display:"block"});
-            // $('select').niceSelect('destroy');
-            $('#district').html(data);
-            // $('select').niceSelect('update');
-        },'text');
-    })
 
+    // $('#province').change(function() {
+    //     // event.preventDefault();
+    //     var provinceID = $('#province').val();
+    //     // console.log(provinceID);
+    //     $.post('views/payments/district.php',{'provinceid':provinceID},function(data) {
+    //         // console.log(data);
+    //         // $('#district').css({display:"block"});
+    //         // $('select').niceSelect('destroy');
+    //         $('#district').html(data);
+    //         // $('select').niceSelect('update');
+    //     },'text');
+    // })
 });
+// function incrementQty() {
+//     var value = document.querySelector('input[name="qty"]').value;
+//     var cardQty = document.querySelector(".cart-qty");
+//     value = isNaN(value) ? 1 : value;
+//     value++;
+//     document.querySelector('input[name="qty"]').value = value;
+//     cardQty.innerHTML = value;
+//     cardQty.classList.add("rotate-x");
+// }
+//
+// function decrementQty() {
+//     var value = document.querySelector('input[name="qty"]').value;
+//     var cardQty = document.querySelector(".flaticon-shopping-cart");
+//     value = isNaN(value) ? 1 : value;
+//     value > 1 ? value-- : value;
+//     document.querySelector('input[name="qty"]').value = value;
+//     cardQty.innerHTML = value;
+//     cardQty.classList.add("rotate-x");
+// }
+//
+// function removeAnimation(e) {
+//     e.target.classList.remove("rotate-x");
+// }
+//
+// const counter = document.querySelector(".flaticon-shopping-cart");
+// counter.addEventListener("animationend", removeAnimation);

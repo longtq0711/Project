@@ -1,6 +1,7 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
+    <base href="<?php echo $_SERVER['SCRIPT_NAME'] ?>" />
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Watch shop | eCommers</title>

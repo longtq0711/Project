@@ -1,3 +1,6 @@
+<?php
+require_once 'helpers/Helper.php';
+?>
 <!-- Hero Area Start-->
     <div class="slider-area ">
         <div class="single-slider slider-height2 d-flex align-items-center">
@@ -21,10 +24,14 @@
 <!--                <!-- card one -->
 <!--                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">-->
                     <div class="row">
-                        <?php foreach ($products AS $product):?>
+                        <?php foreach ($products AS $product):
+                            $slug = Helper::getSlug($product['title']);
+                            $product_link = "product/$slug/".$product['id'].".html";
+                        ?>
                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                             <div class="single-popular-items mb-50 text-center">
                                 <div class="popular-img">
+                                    <a href="products_detail/<?php echo $product['id'];?>.html">
                                     <img src="<?php echo $product['avatar'];?>" alt="">
                                     <div class="img-cap" >
                                         <span class="add-to-cart" data-id="<?php echo $product['id']?>">Add to cart</span>
@@ -32,6 +39,7 @@
                                     <div class="favorit-items">
                                         <span class="flaticon-heart"></span>
                                     </div>
+                                    </a>
                                 </div>
                                 <div class="popular-caption">
                                     <h3><a href="products_detail/<?php echo $product['id'];?>.html"><?php echo $product['title'];?></a></h3>

@@ -44,7 +44,7 @@ class Pagination {
         $total_page = $this->getTotal();
         if ($current_page < $total_page){
             $controller = $this->params['controller'];
-            $action = $this->params['controller'];
+            $action = $this->params['action'];
             $page = $current_page + 1;
             $next_url = "index.php?controller=$controller&action=$action&page=$page";
             $next_page = "<li><a href='$next_url'>Next</a></li>";
@@ -66,15 +66,15 @@ class Pagination {
         if ($this->params['full_mode'] == FALSE){
             for ($page=1; $page<=$total_page; $page++){
                 $current_page = $this->getCurrent();
+                $page_url = "index.php?controller=$controller&action=$action&page=$page";
                 if ($page == 1 || $page == $total_page || $page == $current_page - 1 || $page == $current_page + 1){
-                    $page_url = "index.php?controller=$controller&action=$action&page=$page";
+
                     $data .= "<li><a href='$page_url'>$page</a></li>";
                 }
                 else if ($page == $current_page){
-                    $data .= "<li><a class='active' href=''>$page</a></li>";
+                    $data .= "<li><a class='active' href='$page_url'>$page</a></li>";
                 }
                 else if (in_array($page, [$current_page - 2, $current_page + 2])){
-                    $page_url = "index.php?controller=$controller&action=$action&page=$page";
                     $data .= "<li><a href='$page_url'>...</a></li>";
             }
 

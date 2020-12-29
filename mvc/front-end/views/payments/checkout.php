@@ -1,4 +1,8 @@
 <?php
+$fullname = '';
+$email = '';
+$phone = '';
+$address = '';
 if (isset($_SESSION['user'])){
 $fullname = $_SESSION['user']['fullname'];
 $email = $_SESSION['user']['email'];
@@ -84,37 +88,6 @@ $address = $_SESSION['user']['address'];
                                 <label>Email</label>
                                 <input value="<?php echo $email;?>" type="email" class="form-control" id="email" name="email" />
                             </div>
-<!--                            <div class="col-md-12 form-group p_star">-->
-<!--                                <select class="form-control" id="province">-->
-<!--                                    <option value="">Province</option>-->
-<!--                                    --><?php
-//                                        include "connection.php";
-//                                        $sql = "SELECT * FROM province";
-//                                        $query = $connection->prepare($sql);
-//                                        $query->execute();
-//                                        $result = $query->fetchAll(PDO::FETCH_ASSOC);
-//                                        foreach ($result AS $key){
-//                                        echo '<option value="'.$key['id'].'">'.$key['_name'].'</option>';}
-//                                    ?>
-<!--                                </select>-->
-<!---->
-<!--                            </div>-->
-<!--                            <div class="col-md-12 form-group p_star">-->
-<!--                                <select class="form-control" id="district">-->
-<!--                                    <option value="">District</option>-->
-<!--                                </select>-->
-<!--                                <select class="form-control">-->
-<!--                                    <option value="">Ward</option>-->
-<!--                                </select>-->
-<!--                                <style>-->
-<!--                                    /*#district{*/-->
-<!--                                        /*!*display: block !important;*!*/-->
-<!--                                    /*}*/-->
-<!--                                </style>-->
-<!--                            </div>-->
-<!--                            <div class="col-md-12 form-group p_star">-->
-<!---->
-<!--                            </div>-->
                             <div class="col-md-12 form-group p_star">
                                 <label>Address</label>
                                 <input value="<?php echo $address;?>" type="text" class="form-control" id="address" name="address" />
@@ -123,12 +96,9 @@ $address = $_SESSION['user']['address'];
                                 <label>Note</label>
                                 <textarea class="form-control" name="note" style="height:100px;"></textarea>
                             </div>
-<!--                            <div class="col-md-12 form-group">-->
-<!--                                <div class="creat_account">-->
-<!--                                    <input type="checkbox" id="f-option2" name="selector" />-->
-<!--                                    <label for="f-option2">Create an account?</label>-->
-<!--                                </div>-->
-<!--                            </div>-->
+                            <div class="col-md-12 form-group">
+
+                            </div>
 <!--                            <div class="col-md-12 form-group">-->
 <!--                                <div class="creat_account">-->
 <!--                                    <h3>Shipping Details</h3>-->
@@ -203,6 +173,11 @@ $address = $_SESSION['user']['address'];
 <!--                                <a href="#">terms & conditions*</a>-->
 <!--                            </div>-->
                             <input type="submit" name="submit" class="btn btn-primary" value="Proceed to Pay">
+                        </div>
+                        <br>
+                        <div class="creat_account">
+                            <input type="checkbox" id="f-option2" name="selector" />
+                            <label for="f-option2">Create an account?</label>
                         </div>
                     </div>
                 </div>
