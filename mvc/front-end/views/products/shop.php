@@ -23,7 +23,65 @@ require_once 'helpers/Helper.php';
 <!--            <div class="tab-content" id="nav-tabContent">-->
 <!--                <!-- card one -->
 <!--                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">-->
-                    <div class="row">
+                <form method="post" action="">
+
+        <section class="mb-4">
+        <?php
+        $price1_checked = '';
+        $price2_checked = '';
+        $price3_checked = '';
+        $price4_checked = '';
+        $price5_checked = '';
+        if (isset($_POST['price'])) {
+            foreach ($_POST['price'] as $price) {
+                if ($price == 1) {
+                    $price1_checked = 'checked';
+                }
+                if ($price == 2) {
+                    $price2_checked = 'checked';
+                }
+                if ($price == 3) {
+                    $price3_checked = 'checked';
+                }
+                if ($price == 4) {
+                    $price4_checked = 'checked';
+                }
+                if ($price == 5) {
+                    $price5_checked = 'checked';
+                }
+            }
+        }
+        ?>
+        <h6 class="font-weight-bold mb-3">Price</h6>
+
+        <div class="form-check pl-0 mb-3">
+            <input value="1" type="checkbox" class="form-check-input" id="under25" <?php echo $price1_checked;?> name="price[]">
+            <label class="form-check-label small text-uppercase card-link-secondary" for="under25">Under 1,000,000</label>
+        </div>
+        <div class="form-check pl-0 mb-3">
+            <input value="2" type="checkbox" class="form-check-input" id="2550" name="price[]" <?php echo $price2_checked;?>>
+            <label class="form-check-label small text-uppercase card-link-secondary" for="2550">1,000,000 to 5,000,000</label>
+        </div>
+        <div class="form-check pl-0 mb-3">
+            <input value="3" type="checkbox" class="form-check-input" id="50100" name="price[]" <?php echo $price3_checked;?>>
+            <label class="form-check-label small text-uppercase card-link-secondary" for="50100">5,000,000 to 10,000,000</label>
+        </div>
+        <div class="form-check pl-0 mb-3">
+            <input value="4" type="checkbox" class="form-check-input" id="100200" name="price[]" <?php echo $price4_checked;?>>
+            <label class="form-check-label small text-uppercase card-link-secondary" for="100200">10,000,000 to 20,000,000</label>
+        </div>
+        <div class="form-check pl-0 mb-3">
+            <input value="5" type="checkbox" class="form-check-input" id="200above" name="price[]" <?php echo $price5_checked;?>>
+            <label class="form-check-label small text-uppercase card-link-secondary" for="200above">20,000,000 & Above</label>
+        </div>
+        <div class="form-group">
+            <input type="submit" name="filter" value="Filter" class="btn btn-primary"/>
+            <a href="shop.html" class="btn btn-default">Xóa filter</a>
+        </div>
+
+    </section>
+                </form>
+                <div class="row">
                         <?php foreach ($products AS $product):
                             $slug = Helper::getSlug($product['title']);
                             $product_link = "product/$slug/".$product['id'].".html";

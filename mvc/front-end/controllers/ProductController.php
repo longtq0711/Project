@@ -10,7 +10,8 @@ class ProductController extends Controller {
 //    echo "</pre>";
 //    die;
     $params = [];
-    //nếu user có hành động filter
+      $str_price = '';
+      $product_model = new Product();
     if (isset($_POST['filter'])) {
       if (isset($_POST['category'])) {
         $category = implode(',', $_POST['category']);
@@ -19,19 +20,21 @@ class ProductController extends Controller {
         $params['category'] = $str_category_id;
       }
       if (isset($_POST['price'])) {
-        $str_price = '';
         foreach ($_POST['price'] AS $price) {
           if ($price == 1) {
             $str_price .= " OR products.price < 1000000";
           }
           if ($price == 2) {
-            $str_price .= " OR (products.price >= 1000000 AND products.price < 20000000)";
+            $str_price .= " OR (products.price >= 1000000 AND products.price < 50000000)";
           }
           if ($price == 3) {
-            $str_price .= " OR (products.price >= 2000000 AND products.price < 30000000)";
+            $str_price .= " OR (products.price >= 5000000 AND products.price < 10000000)";
           }
           if ($price == 4) {
-            $str_price .= " OR products.price >= 3000000";
+              $str_price .= " OR (products.price >= 10000000 AND products.price < 20000000)";
+          }
+          if ($price == 5){
+              $str_price .= " OR products.price >= 20000000";
           }
         }
         //cắt bỏ từ khóa OR ở vị trí ban đầu
@@ -40,20 +43,33 @@ class ProductController extends Controller {
         $params['price'] = $str_price;
       }
     }
-    $product_model = new Product();
-    $count = $product_model->countTotal();
+
+    if (isset($_POST['price'])) {
+        $count = $product_model->countFilter($params);
+    } else {
+        $count = $product_model->countTotal();
+    }
+    echo $count;
     $params_pagination = [
       'total' => $count,
       'limit' => 9,
       'controller' => 'product',
       'action' => 'showAll',
       'page' =>  isset($_GET['page']) ? $_GET['page'] : 1,
-      'full_mode' => FALSE
+      'full_mode' => FALSE,
+       'price' => $str_price
     ];
 //    echo"<pre>";
 //    print_r($params_pagination);
 //    echo"</pre>";
-    $products = $product_model->getAllPagination($params_pagination);
+
+//    if (isset($_POST)){
+//        $products = $product_model->getProductFilter($params);
+//    }
+//    else {
+        $products = $product_model->getAllPagination($params_pagination);
+//    }
+
     //xử lý phân trang
     $pagination_model = new Pagination($params_pagination);
     $pagination = $pagination_model->getPagination();
@@ -108,7 +124,6 @@ class ProductController extends Controller {
               } else $_SESSION['cart'][$id] = $cart;
           } else { $_POST['quantity'] = 0;}
       }
-
 
 
       $this->content = $this->render('views/products/products_detail.php',[
