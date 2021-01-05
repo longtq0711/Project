@@ -5,7 +5,9 @@ class Pagination {
         'limit' => 0,
         'controller' => '',
         'action' => '',
-        'full_mode' => FALSE
+        'full_mode' => FALSE,
+        'price' => '',
+        'filter' => ''
     ];
     public function __construct($params){
         $this->params = $params;
@@ -32,8 +34,10 @@ class Pagination {
         if ($current_page >= 2){
             $controller = $this->params['controller'];
             $action = $this->params['action'];
+            $price = $this->params['price'];
+            $filter = $this->params['filter'];
             $page = $current_page - 1;
-            $prev_url = "index.php?controller=$controller&action=$action&page=$page";
+            $prev_url = "index.php?controller=$controller&action=$action&price=$price&filter=$filter&page=$page";
             $prev_page = "<li><a href='$prev_url'>Prev</a></li>";
         }
         return $prev_page;
@@ -45,8 +49,10 @@ class Pagination {
         if ($current_page < $total_page){
             $controller = $this->params['controller'];
             $action = $this->params['action'];
+            $price = $this->params['price'];
+            $filter = $this->params['filter'];
             $page = $current_page + 1;
-            $next_url = "index.php?controller=$controller&action=$action&page=$page";
+            $next_url = "index.php?controller=$controller&action=$action&price=$price&filter=$filter&page=$page";
             $next_page = "<li><a href='$next_url'>Next</a></li>";
         }
         return $next_page;
@@ -60,13 +66,14 @@ class Pagination {
         $data .= "<ul class='border-pagination'>";
         $prev = $this->getPrevPage();
         $data .= $prev;
-
+        $filter = $this->params['filter'];
+        $price = $this->params['price'];
         $controller = $this->params['controller'];
         $action = $this->params['action'];
         if ($this->params['full_mode'] == FALSE){
             for ($page=1; $page<=$total_page; $page++){
                 $current_page = $this->getCurrent();
-                $page_url = "index.php?controller=$controller&action=$action&page=$page";
+                $page_url = "index.php?controller=$controller&action=$action&price=$price&filter=$filter&page=$page";
                 if ($page == 1 || $page == $total_page || $page == $current_page - 1 || $page == $current_page + 1){
 
                     $data .= "<li><a href='$page_url'>$page</a></li>";
@@ -87,7 +94,7 @@ class Pagination {
                     $data .= "<li class='active'><a href='#'>$page</a></li>";
                 } else {
                     $page_url
-                        = "index.php?controller=$controller&action=$action&page=$page";
+                        = "index.php?controller=$controller&action=$action&price=$price&filter=$filter&page=$page";
                     $data .= "<li><a href='$page_url'>$page</a></li>";
                 }
             }

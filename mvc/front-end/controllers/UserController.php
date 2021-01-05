@@ -98,7 +98,6 @@ class UserController extends Controller{
                         if (!file_exists($dir_uploads)) {
                             mkdir($dir_uploads);
                         }
-                        //tạo tên file theo 1 chuỗi ngẫu nhiên để tránh upload file trùng lặp
                         $filename = $_FILES['image']['name'];
                         move_uploaded_file($_FILES['image']['tmp_name'], $dir_uploads . '/' . $filename);
                     }

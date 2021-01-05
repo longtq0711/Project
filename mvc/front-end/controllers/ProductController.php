@@ -12,29 +12,28 @@ class ProductController extends Controller {
     $params = [];
       $str_price = '';
       $product_model = new Product();
-    if (isset($_POST['filter'])) {
-      if (isset($_POST['category'])) {
-        $category = implode(',', $_POST['category']);
+    if (isset($_GET['filter'])) {
+      if (isset($_GET['category'])) {
+        $category = implode(',', $_GET['category']);
         //chuyển thành chuỗi sau để sử dụng câu lệnh in_array
         $str_category_id = "($category)";
         $params['category'] = $str_category_id;
       }
-      if (isset($_POST['price'])) {
-        foreach ($_POST['price'] AS $price) {
+
+      if (isset($_GET['price'])) {
+          $array = explode(' ', $_GET['price']);
+        foreach ($array AS $price) {
           if ($price == 1) {
             $str_price .= " OR products.price < 1000000";
           }
           if ($price == 2) {
-            $str_price .= " OR (products.price >= 1000000 AND products.price < 50000000)";
+            $str_price .= " OR (products.price >= 1000000 AND products.price < 5000000)";
           }
           if ($price == 3) {
             $str_price .= " OR (products.price >= 5000000 AND products.price < 10000000)";
           }
           if ($price == 4) {
               $str_price .= " OR (products.price >= 10000000 AND products.price < 20000000)";
-          }
-          if ($price == 5){
-              $str_price .= " OR products.price >= 20000000";
           }
         }
         //cắt bỏ từ khóa OR ở vị trí ban đầu
@@ -44,12 +43,18 @@ class ProductController extends Controller {
       }
     }
 
-    if (isset($_POST['price'])) {
+    if (isset($_GET['price'])) {
         $count = $product_model->countFilter($params);
     } else {
         $count = $product_model->countTotal();
     }
     echo $count;
+    $price = '';
+    $filter = '';
+    if (isset($_GET['price'])&&isset($_GET['filter'])) {
+        $price = $_GET['price'];
+        $filter = $_GET['filter'];
+    }
     $params_pagination = [
       'total' => $count,
       'limit' => 9,
@@ -57,7 +62,9 @@ class ProductController extends Controller {
       'action' => 'showAll',
       'page' =>  isset($_GET['page']) ? $_GET['page'] : 1,
       'full_mode' => FALSE,
-       'price' => $str_price
+        'query' => $str_price,
+        'price' => "$price",
+        'filter' => "$filter"
     ];
 //    echo"<pre>";
 //    print_r($params_pagination);

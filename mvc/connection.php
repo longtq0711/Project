@@ -1,5 +1,5 @@
 <?php
-const DB_DSN = 'mysql:host=localhost;dbname=watchshop;port=3306;charset=utf8';
+const DB_DSN = 'mysql:host=localhost;dbname=PHP0720E_PHP0720E_nhom2;port=3306;charset=utf8';
 // Username kết nối vào CSDL
 const DB_USERNAME = 'root';
 // Password kết nối vào CSDL

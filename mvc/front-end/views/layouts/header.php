@@ -26,7 +26,7 @@
                         <nav>
                             <ul id="navigation">
                                 <li><a href="index.php">Home</a></li>
-                                <li><a href="shop.html">shop</a>
+                                <li><a href="index.php?controller=product&action=showAll">shop</a>
                                     <ul class="submenu">
                                         <li><a href="men_watch.html">Men Watch</a></li>
                                         <li><a href="women_watch.html">Women Watch</a></li>

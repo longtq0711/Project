@@ -20,14 +20,14 @@
     <tr>
         <th>ID</th>
         <th>Username</th>
-        <th>first_name</th>
-        <th>last_name</th>
-        <th>phone</th>
-        <th>address</th>
-        <th>email</th>
-        <th>avatar</th>
-        <th>jobs</th>
-        <th>created_at</th>
+        <th>Fullname</th>
+<!--        <th>last_name</th>-->
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Email</th>
+        <th>Avatar</th>
+        <th>Jobs</th>
+        <th>Created_at</th>
         <th></th>
     </tr>
     <?php if (!empty($users)): ?>
@@ -35,8 +35,8 @@
             <tr>
                 <td><?php echo $user['id'] ?></td>
                 <td><?php echo $user['username'] ?></td>
-                <td><?php echo $user['first_name'] ?></td>
-                <td><?php echo $user['last_name'] ?></td>
+                <td><?php echo $user['fullname'] ?></td>
+<!--                <td>--><?php //echo $user['last_name'] ?><!--</td>-->
                 <td><?php echo $user['phone'] ?></td>
                 <td><?php echo $user['address'] ?></td>
                 <td><?php echo $user['email'] ?></td>

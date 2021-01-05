@@ -10,9 +10,7 @@ class ProductController extends Controller
   {
     $product_model = new Product();
 
-    //lấy tổng số bản ghi đang có trong bảng products
     $count_total = $product_model->countTotal();
-    //        xử lý phân trang
     $query_additional = '';
     if (isset($_GET['title'])) {
       $query_additional .= '&title=' . $_GET['title'];
@@ -35,7 +33,6 @@ class ProductController extends Controller
 
     $pages = $pagination->getPagination();
 
-    //lấy danh sách category đang có trên hệ thống để phục vụ cho search
     $category_model = new Category();
     $categories = $category_model->getAll();
 
@@ -49,7 +46,6 @@ class ProductController extends Controller
 
   public function create()
   {
-    //xử lý submit form
     if (isset($_POST['submit'])) {
       $category_id = $_POST['category_id'];
       $title = $_POST['title'];
@@ -61,11 +57,9 @@ class ProductController extends Controller
       $seo_description = $_POST['seo_description'];
       $seo_keywords = $_POST['seo_keywords'];
       $status = $_POST['status'];
-      //xử lý validate
       if (empty($title)) {
         $this->error = 'Không được để trống title';
       } else if ($_FILES['avatar']['error'] == 0) {
-        //validate khi có file upload lên thì bắt buộc phải là ảnh và dung lượng không quá 2 Mb
         $extension = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
         $extension = strtolower($extension);
         $arr_extension = ['jpg', 'jpeg', 'png', 'gif'];
@@ -81,16 +75,13 @@ class ProductController extends Controller
         }
       }
 
-      //nếu ko có lỗi thì tiến hành save dữ liệu
       if (empty($this->error)) {
         $filename = '';
-        //xử lý upload file nếu có
         if ($_FILES['avatar']['error'] == 0) {
           $dir_uploads = __DIR__ . '/../assets/uploads';
           if (!file_exists($dir_uploads)) {
             mkdir($dir_uploads);
           }
-          //tạo tên file theo 1 chuỗi ngẫu nhiên để tránh upload file trùng lặp
           $filename = time() . '-product-' . $_FILES['avatar']['name'];
           move_uploaded_file($_FILES['avatar']['tmp_name'], $dir_uploads . '/' . $filename);
         }
@@ -118,7 +109,6 @@ class ProductController extends Controller
       }
     }
 
-    //lấy danh sách category đang có trên hệ thống để phục vụ cho search
     $category_model = new Category();
     $categories = $category_model->getAll();
 
@@ -157,7 +147,6 @@ class ProductController extends Controller
     $id = $_GET['id'];
     $product_model = new Product();
     $product = $product_model->getById($id);
-    //xử lý submit form
     if (isset($_POST['submit'])) {
       $category_id = $_POST['category_id'];
       $title = $_POST['title'];
@@ -169,11 +158,9 @@ class ProductController extends Controller
       $seo_description= $_POST['seo_description'];
       $seo_keywords = $_POST['seo_keywords'];
       $status = $_POST['status'];
-      //xử lý validate
       if (empty($title)) {
         $this->error = 'Không được để trống title';
       } else if ($_FILES['avatar']['error'] == 0) {
-        //validate khi có file upload lên thì bắt buộc phải là ảnh và dung lượng không quá 2 Mb
         $extension = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
         $extension = strtolower($extension);
         $arr_extension = ['jpg', 'jpeg', 'png', 'gif'];
@@ -189,18 +176,14 @@ class ProductController extends Controller
         }
       }
 
-      //nếu ko có lỗi thì tiến hành save dữ liệu
       if (empty($this->error)) {
         $filename = $product['avatar'];
-        //xử lý upload file nếu có
         if ($_FILES['avatar']['error'] == 0) {
           $dir_uploads = __DIR__ . '/../assets/uploads';
-          //xóa file cũ, thêm @ vào trước hàm unlink để tránh báo lỗi khi xóa file ko tồn tại
           @unlink($dir_uploads . '/' . $filename);
           if (!file_exists($dir_uploads)) {
             mkdir($dir_uploads);
           }
-          //tạo tên file theo 1 chuỗi ngẫu nhiên để tránh upload file trùng lặp
           $filename = time() . '-product-' . $_FILES['avatar']['name'];
           move_uploaded_file($_FILES['avatar']['tmp_name'], $dir_uploads . '/' . $filename);
         }
@@ -229,7 +212,6 @@ class ProductController extends Controller
       }
     }
 
-    //lấy danh sách category đang có trên hệ thống để phục vụ cho search
     $category_model = new Category();
     $categories = $category_model->getAll();
 

@@ -12,7 +12,6 @@ class Product extends Model {
       $str_price = $params['price'];
       $str_filter .= " AND $str_price";
     }
-    //do cả 2 bảng products và categories đều có trường name, nên cần phải thay đổi lại tên cột cho 1 trong 2 bảng
     $sql_select = "SELECT products.*, categories.name 
           AS category_name FROM products
           INNER JOIN categories ON products.category_id = categories.id
@@ -29,8 +28,8 @@ class Product extends Model {
         $page = $arr_params['page'];
         $start = ($page - 1) * $limit;
         $str_filter = '';
-        if (!empty($arr_params['price'])) {
-            $str_price = $arr_params['price'];
+        if (!empty($arr_params['query'])) {
+            $str_price = $arr_params['query'];
             $str_filter .= " AND $str_price";
         }
         $obj_select = $this->connection->prepare("SELECT products.*, categories.name 
@@ -72,13 +71,9 @@ class Product extends Model {
         return $popular;
     }
   public  function getProductByID($product_id){
-      // - Tạo câu truy vấn
       $sql_select_one = "SELECT * FROM products WHERE id = $product_id";
-      // - Tạo đối tượng truy vấn
       $obj_select_one = $this->connection->prepare($sql_select_one);
-      // - Thực thi đối tượng truy vấn
       $obj_select_one->execute();
-      // - Trả về mảng 1 phần tử duy nhất
       $product = $obj_select_one->fetch(PDO::FETCH_ASSOC);
       return $product;
   }
@@ -108,7 +103,6 @@ class Product extends Model {
             $str_price = $params['price'];
             $str_filter .= " AND $str_price";
         }
-        //do cả 2 bảng products và categories đều có trường name, nên cần phải thay đổi lại tên cột cho 1 trong 2 bảng
         $sql_select = "SELECT products.*, categories.name 
           AS category_name FROM products
           INNER JOIN categories ON products.category_id = categories.id

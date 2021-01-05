@@ -14,33 +14,21 @@ class LoginController
      * @return false|string
      */
     public function render($file, $variables = []) {
-        //Nhập các giá trị của mảng vào các biến có tên tương ứng chính là key của phần tử đó.
-        //khi muốn sử dụng biến từ bên ngoài vào trong hàm
         extract($variables);
-        //bắt đầu nhớ mọi nội dung kể từ khi khai báo, kiểu như lưu vào bộ nhớ tạm
         ob_start();
-        //thông thường nếu ko có ob_start thì sẽ hiển thị 1 dòng echo lên màn hình
-        //tuy nhiên do dùng ob_Start nên nội dung của nó đã đc lưu lại, chứ ko hiển thị ra màn hình nữa
-        require_once $file;
-        //lấy dữ liệu từ bộ nhớ tạm đã lưu khi gọi hàm ob_Start để xử lý, lấy xong rồi xóa luôn dữ liệu đó
-        $render_view = ob_get_clean();
+        require_once $file;$render_view = ob_get_clean();
 
         return $render_view;
     }
 
     public function login() {
-        //nếu user đã đăngn hập r thì ko cho truy cập lại trang login, mà chuenr hướng tới backend
         if (isset($_SESSION['user'])) {
             header('Location: index.php?controller=category&action=index');
             exit();
         }
         if (isset($_POST['submit'])) {
-//            die;
             $username = $_POST['username'];
-            //do password đang lưu trong CSDL sử dụng cơ chế mã hóa md5 nên cần phải thêm
-//            hàm md5 cho password
             $password = md5($_POST['password']);
-            //validate
             if (empty($username) || empty($password)) {
                 $this->error = 'Username hoặc password không được để trống';
             }
@@ -84,13 +72,11 @@ class LoginController
                 $this->error = 'Username này đã tồn tại';
             }
             else if ($_FILES['image']['error'] == 0) {
-                //validate khi có file upload lên thì bắt buộc phải là ảnh và dung lượng không quá 2 Mb
                 $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
                 $extension = strtolower($extension);
                 $arr_extension = ['jpg', 'jpeg', 'png', 'gif'];
 
                 $file_size_mb = $_FILES['image']['size'] / 1024 / 1024;
-                //làm tròn theo đơn vị thập phân
                 $file_size_mb = round($file_size_mb, 2);
 
                 if (!in_array($extension, $arr_extension)) {
@@ -99,20 +85,16 @@ class LoginController
                     $this->error = 'File upload không được quá 2MB';
                 }
             }
-            //xử lý lưu dữ liệu khi không có lỗi
             if (empty($this->error)) {
                 if ($_FILES['image']['error'] == 0) {
                     $dir_uploads = __DIR__ . '/../assets/uploads';
                     if (!file_exists($dir_uploads)) {
                         mkdir($dir_uploads);
                     }
-                    //tạo tên file theo 1 chuỗi ngẫu nhiên để tránh upload file trùng lặp
                     $filename = $_FILES['image']['name'];
                     move_uploaded_file($_FILES['image']['tmp_name'], $dir_uploads . '/' . $filename);
                 }
                 $user_model->username = $username;
-                //chú ý password khi lưu vào bảng users sẽ được mã hóa md5 trước khi lưu
-                //do đang sử dụng cơ chế mã hóa này cho quy trình login
                 $user_model->password = md5($password);
                 $user_model->avatar = $avatar;
                 $user_model->status = 1;

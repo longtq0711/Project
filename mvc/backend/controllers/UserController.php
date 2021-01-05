@@ -72,17 +72,14 @@ class UserController extends Controller {
                     $this->error = 'File upload không được lớn hơn 2Mb';
                 }
             } else if (!empty($username)) {
-                //kiếm tra xem username đã tồn tại trong DB hay chưa, nếu tồn tại sẽ báo lỗi
                 $count_user = $user_model->getUserByUsername($username);
                 if ($count_user) {
                     $this->error = 'Username này đã tồn tại trong CSDL';
                 }
             }
 
-            //xủ lý lưu dữ liệu khi biến error rỗng
             if (empty($this->error)) {
                 $filename = '';
-                //xử lý upload ảnh nếu có
                 if ($_FILES['avatar']['error'] == 0) {
                     $dir_uploads = __DIR__ . '/../assets/uploads';
                     if (!file_exists($dir_uploads)) {
@@ -93,7 +90,6 @@ class UserController extends Controller {
                     move_uploaded_file($_FILES['avatar']['tmp_name'], $dir_uploads . '/' . $filename);
                 }
                 $user_model->username = $username;
-                //lưu password dưới dạng mã hóa, hiện tại sử dụng cơ chế md5
                 $user_model->password = md5($password);
                 $user_model->first_name = $first_name;
                 $user_model->last_name = $last_name;
@@ -139,7 +135,6 @@ class UserController extends Controller {
             $jobs = $_POST['jobs'];
             $facebook = $_POST['facebook'];
             $status = $_POST['status'];
-            //xử lý validate
             if (!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $this->error = 'Email không đúng định dạng';
             } else if (!empty($facebook) && !filter_var($facebook, FILTER_VALIDATE_URL)) {
@@ -157,13 +152,11 @@ class UserController extends Controller {
                 }
             }
 
-            //xủ lý lưu dữ liệu khi biến error rỗng
             if (empty($this->error)) {
                 $filename = $user['avatar'];
                 //xử lý upload ảnh nếu có
                 if ($_FILES['avatar']['error'] == 0) {
                     $dir_uploads = __DIR__ . '/../assets/uploads';
-                    //xóa file ảnh đã update trc đó
                     @unlink($dir_uploads . '/' . $filename);
                     if (!file_exists($dir_uploads)) {
                         mkdir($dir_uploads);
@@ -172,7 +165,6 @@ class UserController extends Controller {
                     $filename = time() . '-user-' . $_FILES['avatar']['name'];
                     move_uploaded_file($_FILES['avatar']['tmp_name'], $dir_uploads . '/' . $filename);
                 }
-                //lưu password dưới dạng mã hóa, hiện tại sử dụng cơ chế md5
                 $user_model->first_name = $first_name;
                 $user_model->last_name = $last_name;
                 $user_model->phone = $phone;

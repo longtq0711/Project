@@ -34,10 +34,9 @@ class CartController extends Controller
         if (!isset($_SESSION['cart'])) {
             $_SESSION['cart'][$product_id] = $cart_item;
         } else {
-            // Nếu thêm sản phẩm đã tồn tại trong giỏ thì chỉ tăng số lượng lên 1
             if (array_key_exists($product_id, $_SESSION['cart'])){
             $_SESSION['cart'][$product_id]['quantity']++;
-            } else $_SESSION['cart'][$product_id] = $cart_item; // SP chưa tồn tại thì thêm mới
+            } else $_SESSION['cart'][$product_id] = $cart_item;
         }
         echo "<pre>";
      print_r($_SESSION);
@@ -55,9 +54,7 @@ class CartController extends Controller
             }
                 $_SESSION['success'] = "Update cart successfully";
         }
-        //Lấy ra nội dung view
         $this->content = $this->render('views/carts/index.php');
-        //Gọi layout để hiển thị ra view vừa lấy được
         require_once 'views/layouts/main.php';
     }
 
