@@ -9,3 +9,4 @@ class ContactController extends Controller {
     }
 
 }
+}

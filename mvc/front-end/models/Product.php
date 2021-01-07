@@ -40,11 +40,7 @@ class Product extends Model {
         $products = $obj_select->fetchAll();
         return $products;
     }
-  /**
-   * Lấy thông tin sản phẩm theo id
-   * @param $id
-   * @return mixed
-   */
+
   public function getById($id)
   {
     $obj_select = $this->connection

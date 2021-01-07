@@ -16,9 +16,8 @@ class Controller
 //    die;
   }
 
-  //chứa nội dung view
+
     public $content;
-    //chứa nội dung lỗi validate
     public $error;
 
     /**

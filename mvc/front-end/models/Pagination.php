@@ -37,7 +37,12 @@ class Pagination {
             $price = $this->params['price'];
             $filter = $this->params['filter'];
             $page = $current_page - 1;
-            $prev_url = "index.php?controller=$controller&action=$action&price=$price&filter=$filter&page=$page";
+            if(!empty($price)){
+                $prev_url = "index.php?controller=$controller&action=$action&price=$price&filter=$filter&page=$page";
+            }
+            else{
+                $prev_url = "index.php?controller=$controller&action=$action&page=$page";
+            }
             $prev_page = "<li><a href='$prev_url'>Prev</a></li>";
         }
         return $prev_page;
@@ -52,7 +57,12 @@ class Pagination {
             $price = $this->params['price'];
             $filter = $this->params['filter'];
             $page = $current_page + 1;
-            $next_url = "index.php?controller=$controller&action=$action&price=$price&filter=$filter&page=$page";
+            if(!empty($price)){
+                $next_url = "index.php?controller=$controller&action=$action&price=$price&filter=$filter&page=$page";
+            }
+            else{
+                $next_url = "index.php?controller=$controller&action=$action&page=$page";
+            }
             $next_page = "<li><a href='$next_url'>Next</a></li>";
         }
         return $next_page;
@@ -73,7 +83,12 @@ class Pagination {
         if ($this->params['full_mode'] == FALSE){
             for ($page=1; $page<=$total_page; $page++){
                 $current_page = $this->getCurrent();
-                $page_url = "index.php?controller=$controller&action=$action&price=$price&filter=$filter&page=$page";
+                if(!empty($price)){
+                    $page_url = "index.php?controller=$controller&action=$action&price=$price&filter=$filter&page=$page";
+                }
+                else{
+                    $page_url = "index.php?controller=$controller&action=$action&page=$page";
+                }
                 if ($page == 1 || $page == $total_page || $page == $current_page - 1 || $page == $current_page + 1){
 
                     $data .= "<li><a href='$page_url'>$page</a></li>";

@@ -133,9 +133,6 @@ VALUES (:name, :avatar, :description, :status)";
     $obj_select = $this->connection
       ->prepare("SELECT * FROM categories LIMIT $start, $limit");
 
-//    do PDO coi tất cả các param luôn là 1 string, nên cần sử dụng bindValue / bindParam cho các tham số start và limit
-//        $obj_select->bindParam(':limit', $limit, PDO::PARAM_INT);
-//        $obj_select->bindParam(':start', $start, PDO::PARAM_INT);
     $obj_select->execute();
     $categories = $obj_select->fetchAll(PDO::FETCH_ASSOC);
 

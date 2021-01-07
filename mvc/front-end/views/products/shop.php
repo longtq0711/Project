@@ -80,8 +80,8 @@ require_once 'helpers/Helper.php';
                 </form>
                 <div class="row">
                         <?php foreach ($products AS $product):
-                            $slug = Helper::getSlug($product['title']);
-                            $product_link = "product/$slug/".$product['id'].".html";
+//                            $slug = Helper::getSlug($product['title']);
+//                            $product_link = "product/$slug/".$product['id'].".html";
                         ?>
                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                             <div class="single-popular-items mb-50 text-center">

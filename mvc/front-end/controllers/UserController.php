@@ -41,7 +41,24 @@ class UserController extends Controller{
             header('location:index.php?controller=product');
             exit();
         }
-        if(isset($_POST['submit'])) {
+        $cookie_name = 'remember';
+        if (empty($_SESSION['user'])){
+            if (isset($cookie_name)){
+                if (isset($_COOKIE[$cookie_name])){
+                    $_COOKIE[$cookie_name]['user'] = 1;
+                    parse_str($_COOKIE[$cookie_name]);
+                    $user_model = new User();
+                    $user = $user_model->getUserLogin($username, md5($pass));
+                    if (!empty($user)){
+                        $_COOKIE[$cookie_name]['user'] = $user;
+                        header('Location:index.php?controller=user&action=profile');
+                        exit();
+                    }
+                }
+            }
+        }
+        if (isset($_POST['submit'])) {
+
             $username = $_POST['username'];
             $password = $_POST['password'];
             if (empty($username || empty($password))) {
@@ -54,6 +71,20 @@ class UserController extends Controller{
                     $_SESSION['user'] = $user;
                     $_SESSION['success'] = 'Login thành công';
                     if ($_SESSION['user']['roles'] == 0){
+                        $str .= 'username='.$username.'&pass='.$password;
+                        $fullname = $_SESSION['user']['fullname'];
+                        $str .= '&fullname='.$fullname;
+                        $email = $_SESSION['user']['email'];
+                        $str .= '&email='.$email;
+                        $phone = $_SESSION['user']['phone'];
+                        $str .= '&phone='.$phone;
+                        $address = $_SESSION['user']['address'];
+                        $str .= '&address='.$address;
+                        $avatar = $_SESSION['user']['avatar'];
+                        $str .= '&avatar='.$avatar;
+                        if (isset($_POST['remember'])) {
+                            setcookie($cookie_name,$str, time() + 3000000);
+                        }
                         header('Location:index.php?controller=user&action=profile');
                         exit();
                     }
@@ -124,9 +155,19 @@ class UserController extends Controller{
         }
         public function logout()
         {
-            $_SESSION=[];
-            session_destroy();
-            $_SESSION['success'] = 'Logout succesfully';
-            header('Location:index.php?controller=user&action=login');
+            if (isset($_COOKIE['remember'])) {
+                setcookie("remember", "", time() - 3000003);
+//                setcookie("remember", "", time() - 3000003,'/');
+                unset($_COOKIE['remember']);
+                $_SESSION['success'] = 'Logout succesfully';
+                header('Location:index.php?controller=user&action=login');
+            }
+            else{
+                $_SESSION=[];
+                session_destroy();
+                $_SESSION['success'] = 'Logout succesfully';
+                header('Location:index.php?controller=user&action=login');
+            }
+
         }
 }

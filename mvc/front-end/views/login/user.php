@@ -1,9 +1,6 @@
 <?php
 $username='';
-$email='';
-//echo"<pre>";
-//print_r($_SESSION['user']);
-//echo"</pre>";
+
 if (isset($_SESSION['user'])){
     $username = $_SESSION['user']['username'];
     $fullname = $_SESSION['user']['fullname'];
@@ -11,6 +8,11 @@ if (isset($_SESSION['user'])){
     $phone = $_SESSION['user']['phone'];
     $address = $_SESSION['user']['address'];
     $avatar = $_SESSION['user']['avatar'];
+}
+if (empty($_SESSION['user'])){
+        if (isset($_COOKIE['remember'])){
+            parse_str($_COOKIE['remember']);
+        }
 }
 ?>
 <div class="slider-area ">

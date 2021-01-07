@@ -48,7 +48,7 @@ class ProductController extends Controller {
     } else {
         $count = $product_model->countTotal();
     }
-    echo $count;
+//    echo $count;
     $price = '';
     $filter = '';
     if (isset($_GET['price'])&&isset($_GET['filter'])) {

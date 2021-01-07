@@ -43,7 +43,7 @@
                             </div>
                             <div class="col-md-12 form-group">
                                 <div class="creat_account d-flex align-items-center">
-                                    <input type="checkbox" id="f-option" name="selector">
+                                    <input type="checkbox" id="f-option" name="remember">
                                     <label for="f-option">Remember me</label>
                                 </div>
                                 <button type="submit" value="submit" name="submit" class="btn_3">

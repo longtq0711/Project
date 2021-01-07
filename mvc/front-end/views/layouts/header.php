@@ -60,7 +60,7 @@
                                 </div>
                             </li>
                             <li>
-                                <?php if(isset($_SESSION['user'])) :?>
+                                <?php if(isset($_SESSION['user'])||isset($_COOKIE['remember'])) :?>
                                     <a type="button" class="dropdown-item" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span class="flaticon-user">
                                     </a>

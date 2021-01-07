@@ -119,7 +119,7 @@
                     </table>
                     </form>
                     <div class="checkout_btn_inner float-right">
-                        <a class="btn_1" href="shop.html">Continue Shopping</a>
+                        <a class="btn_1" href="index.php?controller=product&action=showAll">Continue Shopping</a>
                         <a class="btn_1 checkout_btn_1" href="payment.html">Proceed to checkout</a>
                     </div>
                 </div>
