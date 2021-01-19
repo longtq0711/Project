@@ -52,12 +52,12 @@ class Product extends Model
 
         return $products;
     }
-    public function getPopular()
+    public function getCategory($str)
     {
         $obj_select = $this->connection
             ->prepare("SELECT products.*, categories.name AS category_name FROM products 
                         INNER JOIN categories ON categories.id = products.category_id
-                        WHERE category_name LIKE 'Popular item'
+                        WHERE category_name LIKE $str;
                         ORDER BY products.created_at DESC
                         ");
 

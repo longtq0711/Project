@@ -52,6 +52,29 @@ require_once 'helpers/Helper.php';
                 }
             }
         }
+        $category1_check='';
+        $category2_check='';
+        $category3_check='';
+        $category4_check='';
+
+
+        if (isset($_GET['category'])) {
+            $array = explode(' ', $_GET['category']);
+            foreach ($array as $category) {
+                if ($category == 1) {
+                    $category1_check = 'checked';
+                }
+                if ($category == 2) {
+                    $category2_check = 'checked';
+                }
+                if ($category == 3) {
+                    $category3_check = 'checked';
+                }
+                if ($category == 4) {
+                    $category4_check = 'checked';
+                }
+            }
+        }
         ?>
         <h6 class="font-weight-bold mb-3">Price</h6>
         <div class="form-check pl-0 mb-3">
@@ -71,6 +94,14 @@ require_once 'helpers/Helper.php';
             <input value="4" type="checkbox" class="form-check-input" id="100200" name="price" <?php echo $price4_checked;?>>
             <label class="form-check-label small text-uppercase card-link-secondary" for="100200">10,000,000 to 20,000,000</label>
         </div>
+            <div class="form-check pl-0 mb-3">
+                <input value="1" type="checkbox" class="form-check-input" id="" name="category" <?php echo $category1_check;?>>
+                <label class="form-check-label small text-uppercase card-link-secondary" for="">Mens Watch</label>
+            </div>
+            <div class="form-check pl-0 mb-3">
+                <input value="2" type="checkbox" class="form-check-input" id="" name="category" <?php echo $category2_check;?>>
+                <label class="form-check-label small text-uppercase card-link-secondary" for="100200">Ladies Watch</label>
+            </div>
         <div class="form-group">
 
             <input type="submit" name="filter" value="Filter" class="btn btn-primary"/>

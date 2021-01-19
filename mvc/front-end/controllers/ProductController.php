@@ -11,49 +11,71 @@ class ProductController extends Controller {
 //    die;
     $params = [];
       $str_price = '';
+      $str_category = '';
       $product_model = new Product();
     if (isset($_GET['filter'])) {
       if (isset($_GET['category'])) {
-        $category = implode(',', $_GET['category']);
-        //chuyển thành chuỗi sau để sử dụng câu lệnh in_array
-        $str_category_id = "($category)";
-        $params['category'] = $str_category_id;
+        $params['category'] = $_GET['category'];
+          $array = explode(' ', $_GET['category']);
+          foreach ($array AS $category) {
+              if ($category == 1) {
+                  $str_category .= " AND categories.id = 1";
+              }
+              if ($category == 2) {
+                  $str_category .= " AND categories.id = 2";
+              }
+              if ($category == 3) {
+                  $str_category .= " AND categories.name LIKE 'BULOVA'";
+              }
+              if ($category == 4) {
+                  $str_category .= " AND categories.name LIKE 'ROLEX'";
+              }
+          }
+          $params['category'] = $str_category;
       }
 
       if (isset($_GET['price'])) {
           $array = explode(' ', $_GET['price']);
         foreach ($array AS $price) {
           if ($price == 1) {
-            $str_price .= " OR products.price < 1000000";
+            $str_price .= " AND products.price < 1000000";
           }
           if ($price == 2) {
-            $str_price .= " OR (products.price >= 1000000 AND products.price < 5000000)";
+            $str_price .= " AND (products.price >= 1000000 AND products.price < 5000000)";
           }
           if ($price == 3) {
-            $str_price .= " OR (products.price >= 5000000 AND products.price < 10000000)";
+            $str_price .= " AND (products.price >= 5000000 AND products.price < 10000000)";
           }
           if ($price == 4) {
-              $str_price .= " OR (products.price >= 10000000 AND products.price < 20000000)";
+              $str_price .= " AND (products.price >= 10000000 AND products.price < 20000000)";
           }
         }
         //cắt bỏ từ khóa OR ở vị trí ban đầu
-        $str_price = substr($str_price, 3);
-        $str_price = "($str_price)";
+//        $str_price = substr($str_price, 3);
+//        $str_price = "($str_price)";
         $params['price'] = $str_price;
       }
     }
 
-    if (isset($_GET['price'])) {
+    if (isset($_GET['price']) || isset($_GET['category'])) {
         $count = $product_model->countFilter($params);
     } else {
         $count = $product_model->countTotal();
     }
-//    echo $count;
+    echo $count;
     $price = '';
     $filter = '';
-    if (isset($_GET['price'])&&isset($_GET['filter'])) {
-        $price = $_GET['price'];
+    $category = '';
+    if (isset($_GET['filter'])) {
         $filter = $_GET['filter'];
+        if (isset($_GET['price'])){
+            $price = $_GET['price'];
+        } elseif (isset($_GET['category'])){
+            $category = $_GET['category'];
+        } elseif (isset($_GET['category'])&& isset($_GET['price'])){
+            $category = $_GET['category'];
+            $price = $_GET['price'];
+        }
     }
     $params_pagination = [
       'total' => $count,
@@ -62,7 +84,8 @@ class ProductController extends Controller {
       'action' => 'showAll',
       'page' =>  isset($_GET['page']) ? $_GET['page'] : 1,
       'full_mode' => FALSE,
-        'query' => $str_price,
+        'query' => $str_price.$str_category,
+        'category' => "$category",
         'price' => "$price",
         'filter' => "$filter"
     ];

@@ -37,10 +37,13 @@ class Pagination {
             $price = $this->params['price'];
             $filter = $this->params['filter'];
             $page = $current_page - 1;
-            if(!empty($price)){
+            if (!empty($price)){
                 $prev_url = "index.php?controller=$controller&action=$action&price=$price&filter=$filter&page=$page";
-            }
-            else{
+            } elseif (!empty($category)){
+                $prev_url = "index.php?controller=$controller&action=$action&category=$category&filter=$filter&page=$page";
+            } elseif (!empty($category) && !empty($price)){
+                $prev_url = "index.php?controller=$controller&action=$action&category=$category&price=$price&filter=$filter&page=$page";
+            } else {
                 $prev_url = "index.php?controller=$controller&action=$action&page=$page";
             }
             $prev_page = "<li><a href='$prev_url'>Prev</a></li>";
@@ -57,10 +60,13 @@ class Pagination {
             $price = $this->params['price'];
             $filter = $this->params['filter'];
             $page = $current_page + 1;
-            if(!empty($price)){
+            if (!empty($price)){
                 $next_url = "index.php?controller=$controller&action=$action&price=$price&filter=$filter&page=$page";
-            }
-            else{
+            } elseif (!empty($category)){
+                $next_url = "index.php?controller=$controller&action=$action&category=$category&filter=$filter&page=$page";
+            } elseif (!empty($category) && !empty($price)){
+                $next_url = "index.php?controller=$controller&action=$action&category=$category&price=$price&filter=$filter&page=$page";
+            } else {
                 $next_url = "index.php?controller=$controller&action=$action&page=$page";
             }
             $next_page = "<li><a href='$next_url'>Next</a></li>";
@@ -78,17 +84,22 @@ class Pagination {
         $data .= $prev;
         $filter = $this->params['filter'];
         $price = $this->params['price'];
+        $category = $this->params['category'];
         $controller = $this->params['controller'];
         $action = $this->params['action'];
         if ($this->params['full_mode'] == FALSE){
             for ($page=1; $page<=$total_page; $page++){
                 $current_page = $this->getCurrent();
-                if(!empty($price)){
+                if (!empty($price)){
                     $page_url = "index.php?controller=$controller&action=$action&price=$price&filter=$filter&page=$page";
-                }
-                else{
+                } elseif (!empty($category)){
+                    $page_url = "index.php?controller=$controller&action=$action&category=$category&filter=$filter&page=$page";
+                } elseif (!empty($category) && !empty($price)){
+                    $page_url = "index.php?controller=$controller&action=$action&category=$category&price=$price&filter=$filter&page=$page";
+                } else {
                     $page_url = "index.php?controller=$controller&action=$action&page=$page";
                 }
+
                 if ($page == 1 || $page == $total_page || $page == $current_page - 1 || $page == $current_page + 1){
 
                     $data .= "<li><a href='$page_url'>$page</a></li>";

@@ -72,5 +72,13 @@ class User extends Model
         $user = $obj_select_one->fetch(PDO::FETCH_ASSOC);
         return $user;
     }
+    public function getOrder($id) {
+        $obj_select = $this->connection->prepare("SELECT products.title, orders.* FROM order_details INNER JOIN products
+      ON products.id = order_details.product_id INNER JOIN orders ON orders.id = order_details.order_id 
+      WHERE orders.user_id = $id GROUP BY order_id");
+        $obj_select->execute();
+        $order = $obj_select->fetchAll();
+        return $order;
+    }
 
 };

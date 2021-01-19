@@ -72,6 +72,10 @@
                                         <a class="dropdown-item" style="font-size: 16px;
                                             font-family: 'Josefin Sans',sans-serif;
                                         color: #141517;
+                                        font-weight: 600;" href="order.html">Orders</a>
+                                        <a class="dropdown-item" style="font-size: 16px;
+                                            font-family: 'Josefin Sans',sans-serif;
+                                        color: #141517;
                                         font-weight: 600;" href="logout.html">Log out</a>
                                     </div>
                                     <style>

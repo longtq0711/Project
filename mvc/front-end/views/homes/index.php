@@ -137,53 +137,54 @@ require_once 'helpers/Helper.php';
     <div class="popular-items section-padding30">
         <div class="container">
             <!-- Section tittle -->
-
                 <div class="row justify-content-center">
                     <div class="col-xl-7 col-lg-8 col-md-10">
                         <div class="section-tittle mb-70 text-center">
                             <h2>Popular Items</h2>
                             <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p>
-                        </div>
-                    </div>
-                </div>
-            <?php if (!empty($products)): ?>
-                    <div class="row">
-                        <?php foreach ($products AS $product):
-                        $slug = Helper::getSlug($product['title']);
-                        $product_link = "product_details/$slug/";
-                        $product_cart_add = "";
-                        ?>
-                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                            <div class="single-popular-items mb-50 text-center">
-                                <div class="popular-img">
-                                    <img src="../backend/assets/uploads/<?php echo $product['avatar']?>" alt="<?php echo $product['title'] ?>">
-                                    <div class="img-cap">
+                            <?php if (!empty($products)): ?>
+                                <div class="row">
+                                    <?php foreach ($products AS $product):
+                                        $slug = Helper::getSlug($product['title']);
+                                        $product_link = "product_details/$slug/";
+                                        $product_cart_add = "";
+                                        ?>
+                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                                            <div class="single-popular-items mb-50 text-center">
+                                                <div class="popular-img">
+                                                    <img src="<?php echo $product['avatar']?>" alt="<?php echo $product['title'] ?>">
+                                                    <div class="img-cap">
                                         <span data-id="<?php echo $product['id'];?>" class="add-to-cart">
                                             <a href="#">Add to cart</a>
                                         </span>
-                                    </div>
-                                    <div class="favorit-items">
-                                        <span class="flaticon-heart"></span>
-                                    </div>
+                                                    </div>
+                                                    <div class="favorit-items">
+                                                        <span class="flaticon-heart"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="popular-caption">
+                                                    <h3><a href="product_details/<?php echo $product['id'];?>.html"><?php echo $product['title']; ?></a></h3>
+                                                    <span><?php echo number_format($product['price']); ?> VNĐ</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endforeach;?>
                                 </div>
-                                <div class="popular-caption">
-                                    <h3><a href="product_details/<?php echo $product['id'];?>.html"><?php echo $product['title']; ?></a></h3>
-                                    <span><?php echo number_format($product['price']); ?> VNĐ</span>
+                            <?php endif; ?>
+                            <!-- Button -->
+                            <div class="row justify-content-center">
+                                <div class="room-btn pt-70">
+                                    <a href="index.php?controller=product&action=showAll.html" class="btn view-btn1">View More Products</a>
                                 </div>
                             </div>
                         </div>
-                        <?php endforeach;?>
+                        </div>
                     </div>
-                <?php endif; ?>
-            </div>
-            <!-- Button -->
-            <div class="row justify-content-center">
-                <div class="room-btn pt-70">
-                    <a href="catagory.html" class="btn view-btn1">View More Products</a>
                 </div>
+
             </div>
-        </div>
-    </div>
+
+
     <!-- Popular Items End -->
 <!--? Watch Choice  Start-->
 <div class="watch-area section-padding30">

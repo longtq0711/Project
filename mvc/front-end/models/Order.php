@@ -16,7 +16,7 @@ class Order extends Model {
         VALUES (:user_id,:fullname,:address, :mobile, :email, :note, :price_total, :payment_status)";
         $obj_insert= $this->connection->prepare($sql_insert);
         $arr_insert = [
-            ':user_id' => NULL,
+            ':user_id' => $this->user_id,
             ':fullname' => $this->fullname,
             ':address' => $this->address,
             ':mobile' => $this->mobile,

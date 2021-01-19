@@ -27,3 +27,5 @@ RewriteRule payment.html index.php?controller=payment&action=order
 RewriteRule profile.html index.php?controller=user&action=profile
 
 RewriteRule logout.html index.php?controller=user&action=logout
+
+RewriteRule order.html index.php?controller=user&action=order

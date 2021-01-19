@@ -22,6 +22,7 @@ class PaymentController extends Controller
 //        echo "</pre>";
         //Kiểm tra nếu user submit form thì mới xử lý
         if (isset($_POST['submit'])) {
+            $id = $_SESSION['user']['id'];
             $fullname = $_POST['fullname'];
             $address = $_POST['address'];
             $mobile = $_POST['mobile'];
@@ -35,6 +36,7 @@ class PaymentController extends Controller
             //Email phải đúng định dạng: filter_var
             if (empty($fullname)||empty($address)||empty($mobile)){
                 $this->error = "Phải nhập fullname, address, mobile";
+                echo $id;
             } elseif (strlen($fullname) < 3) {
                 $this->error = "Fullname ít nhất 3 ký tự";
             } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)){
@@ -48,7 +50,7 @@ class PaymentController extends Controller
                 //+ Lưu vào bảng orders:
                 $order_model = new Order();
                 //Gán giá trị cho thuộc tính của model
-                $order_model->user_id = NULL;
+                $order_model->user_id = $id;
                 $order_model->fullname = $fullname;
                 $order_model->address = $address;
                 $order_model->mobile = $mobile;
