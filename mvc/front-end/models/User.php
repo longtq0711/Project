@@ -63,7 +63,7 @@ class User extends Model
     }
     public function getUserProfile($id)
     {
-        $sql_select_one = "SELECT * from users WHERE id = :id";
+        $sql_select_one = "SELECT * from users WHERE id = $id";
         $obj_select_one = $this->connection->prepare($sql_select_one);
         $selects = [
             ':id' => $id
@@ -73,9 +73,17 @@ class User extends Model
         return $user;
     }
     public function getOrder($id) {
-        $obj_select = $this->connection->prepare("SELECT products.title, orders.* FROM order_details INNER JOIN products
-      ON products.id = order_details.product_id INNER JOIN orders ON orders.id = order_details.order_id 
+        $obj_select = $this->connection->prepare("SELECT orders.* FROM order_details
+      INNER JOIN orders ON orders.id = order_details.order_id 
       WHERE orders.user_id = $id GROUP BY order_id");
+        $obj_select->execute();
+        $order = $obj_select->fetchAll();
+        return $order;
+    }
+    public function getProduct($user_id,$order_id) {
+        $obj_select = $this->connection->prepare("SELECT products.title, order_details.quantity FROM order_details INNER JOIN products
+      ON products.id = order_details.product_id INNER JOIN orders ON orders.id = order_details.order_id 
+      WHERE orders.user_id = $user_id AND order_details.order_id = $order_id ");
         $obj_select->execute();
         $order = $obj_select->fetchAll();
         return $order;

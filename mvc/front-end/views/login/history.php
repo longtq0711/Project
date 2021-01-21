@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="hero-cap text-center">
-                        <h2>User profile</h2>
+                        <h2>Orders</h2>
                     </div>
                 </div>
             </div>
@@ -22,17 +22,19 @@
     </tr>
     </thead>
     <tbody>
-    <?php
-    echo"<pre>";
-    print_r($orders);
-    echo "</pre>";
-    foreach ($orders AS $order):?>
+    <?php if (!empty($orders)):?>
+    <?php foreach ($orders AS $order):?>
     <tr>
-        <th scope="row"><?php echo $order['id'];?></th>
-        <td><?php echo $order['title'];?></td>
+        <th scope="row"><?php echo "#".$order['id'];?></th>
+        <td><?php foreach ($products AS $product):?>
+        <?php echo $product['title']." x ".$product['quantity']."<br>";?>
+        <?php endforeach;?>
+        </td>
         <td><?php echo $order['created_at'];?></td>
         <td><?php echo number_format($order['price_total']);?></td>
     </tr>
     <?php endforeach;?>
+    <?php endif;?>
+
     </tbody>
 </table>

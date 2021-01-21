@@ -171,11 +171,16 @@ class UserController extends Controller{
 
         }
     public function order(){
-        $id = $_SESSION['user']['id'];
+        $user_id = $_SESSION['user']['id'];
         $user_model = new User;
-        $orders = $user_model->getOrder($id);
+        $orders = $user_model->getOrder($user_id);
+        foreach ($orders AS $order) {
+            $order_id = $order['id'];
+            $products = $user_model->getProduct($user_id, $order_id);
+        }
         $this->content = $this->render('views/login/history.php',[
-            'orders' => $orders
+            'orders' => $orders,
+            'products' => $products
         ]);
         require_once 'views/layouts/main.php';
     }

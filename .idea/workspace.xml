@@ -3,19 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="2910c848-a8d7-4ffd-be2b-520346bc4091" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/backend/models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/backend/models/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/front-end/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/front-end/.htaccess" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/front-end/controllers/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/front-end/controllers/PaymentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/front-end/controllers/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/front-end/controllers/ProductController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mvc/front-end/controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/front-end/controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/front-end/models/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/front-end/models/Order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/front-end/models/Pagination.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/front-end/models/Pagination.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/front-end/models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/front-end/models/Product.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mvc/front-end/models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/front-end/models/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mvc/front-end/views/homes/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/front-end/views/homes/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/front-end/views/layouts/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/front-end/views/layouts/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/front-end/views/payments/checkout.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/front-end/views/payments/checkout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/front-end/views/products/shop.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/front-end/views/products/shop.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/front-end/views/login/history.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/front-end/views/login/history.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,10 +18,10 @@
     <session id="-1046330480">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="32" />
+          <entry key="project.closed" value="33" />
           <entry key="project.open.time.1" value="10" />
-          <entry key="project.open.time.10" value="2" />
-          <entry key="project.open.time.11" value="1" />
+          <entry key="project.open.time.10" value="3" />
+          <entry key="project.open.time.11" value="2" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.14" value="4" />
           <entry key="project.open.time.15" value="3" />
@@ -42,7 +33,7 @@
           <entry key="project.open.time.7" value="2" />
           <entry key="project.open.time.8" value="3" />
           <entry key="project.open.time.9" value="2" />
-          <entry key="project.opened" value="38" />
+          <entry key="project.opened" value="40" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -52,7 +43,7 @@
           <entry key="html" value="24" />
           <entry key="js" value="25" />
           <entry key="map" value="2" />
-          <entry key="php" value="451" />
+          <entry key="php" value="453" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -60,7 +51,7 @@
           <entry key="CSS" value="14" />
           <entry key="HTML" value="24" />
           <entry key="JavaScript" value="25" />
-          <entry key="PHP" value="451" />
+          <entry key="PHP" value="453" />
           <entry key="SourceMap" value="2" />
           <entry key="htaccess" value="18" />
         </counts>
@@ -70,7 +61,7 @@
           <entry key="css" value="136" />
           <entry key="htaccess" value="694" />
           <entry key="js" value="524" />
-          <entry key="php" value="21016" />
+          <entry key="php" value="21595" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -78,8 +69,8 @@
           <entry key="CSS" value="136" />
           <entry key="HTML" value="7" />
           <entry key="JavaScript" value="524" />
-          <entry key="PHP" value="20973" />
-          <entry key="SQL" value="36" />
+          <entry key="PHP" value="21547" />
+          <entry key="SQL" value="41" />
           <entry key="htaccess" value="694" />
         </counts>
       </usages-collector>
@@ -99,13 +90,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mvc/front-end/controllers/PaymentController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
+            <state relative-caret-position="-642">
               <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mvc/front-end/models/Product.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="361">
@@ -117,26 +108,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mvc/front-end/controllers/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="172" column="28" lean-forward="true" selection-start-line="172" selection-start-column="28" selection-end-line="172" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mvc/front-end/views/login/history.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="32" column="23" lean-forward="true" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mvc/front-end/views/products/shop.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="137" column="26" selection-start-line="137" selection-start-column="26" selection-end-line="137" selection-end-column="26" />
+            <state relative-caret-position="344">
+              <caret line="175" column="50" lean-forward="true" selection-start-line="175" selection-start-column="50" selection-end-line="175" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -144,17 +117,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mvc/front-end/models/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="77" column="50" selection-start-line="77" selection-start-column="50" selection-end-line="77" selection-end-column="50" />
+            <state relative-caret-position="412">
+              <caret line="85" column="64" selection-start-line="85" selection-start-column="64" selection-end-line="85" selection-end-column="64" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mvc/front-end/.htaccess">
+        <entry file="file://$PROJECT_DIR$/mvc/front-end/views/login/history.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="30" column="61" selection-start-line="30" selection-start-column="61" selection-end-line="30" selection-end-column="61" />
+            <state relative-caret-position="289">
+              <caret line="24" column="33" lean-forward="true" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mvc/front-end/views/homes/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="731">
+              <caret line="43" column="74" lean-forward="true" selection-start-line="43" selection-start-column="74" selection-end-line="43" selection-end-column="74" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mvc/front-end/views/products/shop.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="161">
+              <caret line="137" column="22" selection-start-line="137" selection-start-column="18" selection-end-line="137" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -187,7 +178,6 @@
       <find>&lt;p</find>
       <find>Lorem</find>
       <find>BB</find>
-      <find>shop</find>
       <find>name</find>
       <find>method</find>
       <find>&lt;pre&gt;</find>
@@ -205,6 +195,8 @@
       <find>user</find>
       <find>ship</find>
       <find>prod</find>
+      <find>endi</find>
+      <find>shop</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -253,17 +245,17 @@
         <option value="$PROJECT_DIR$/mvc/front-end/views/products/shop.php" />
         <option value="$PROJECT_DIR$/mvc/front-end/models/Pagination.php" />
         <option value="$PROJECT_DIR$/mvc/front-end/controllers/ProductController.php" />
-        <option value="$PROJECT_DIR$/mvc/front-end/views/homes/index.php" />
         <option value="$PROJECT_DIR$/mvc/front-end/views/layouts/header.php" />
         <option value="$PROJECT_DIR$/mvc/front-end/.htaccess" />
         <option value="$PROJECT_DIR$/mvc/front-end/models/Product.php" />
         <option value="$PROJECT_DIR$/mvc/backend/models/User.php" />
-        <option value="$PROJECT_DIR$/mvc/front-end/views/login/history.php" />
         <option value="$PROJECT_DIR$/mvc/front-end/controllers/PaymentController.php" />
         <option value="$PROJECT_DIR$/mvc/front-end/views/payments/checkout.php" />
         <option value="$PROJECT_DIR$/mvc/front-end/models/Order.php" />
         <option value="$PROJECT_DIR$/mvc/front-end/controllers/UserController.php" />
         <option value="$PROJECT_DIR$/mvc/front-end/models/User.php" />
+        <option value="$PROJECT_DIR$/mvc/front-end/views/login/history.php" />
+        <option value="$PROJECT_DIR$/mvc/front-end/views/homes/index.php" />
       </list>
     </option>
   </component>
@@ -273,7 +265,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-12" />
     <option name="y" value="-12" />
     <option name="width" value="1113" />
@@ -284,6 +276,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -424,7 +417,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -510,17 +502,19 @@
       <workItem from="1610619896540" duration="10293000" />
       <workItem from="1610984853575" duration="1840000" />
       <workItem from="1611025080724" duration="4593000" />
+      <workItem from="1611070517824" duration="788000" />
+      <workItem from="1611218735227" duration="3420000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="281399000" />
+    <option name="totallyTimeSpent" value="285607000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="7" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19757085" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15951417" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -544,7 +538,7 @@
       <window_info anchor="right" id="Remote Host" order="4" weight="0.20728745" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20323886" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11417004" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -760,13 +754,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mvc/front-end/views/homes/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="871">
-          <caret line="154" column="62" selection-start-line="154" selection-start-column="62" selection-end-line="154" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mvc/front-end/timezone/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4488">
@@ -774,31 +761,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mvc/front-end/views/layouts/header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1156">
-          <caret line="74" column="65" selection-start-line="74" selection-start-column="65" selection-end-line="74" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mvc/front-end/.htaccess">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="61" selection-start-line="30" selection-start-column="61" selection-end-line="30" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mvc/backend/models/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="381">
           <caret line="147" column="4" selection-start-line="147" selection-start-column="4" selection-end-line="147" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mvc/front-end/models/Pagination.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="59" column="44" selection-start-line="59" selection-start-column="44" selection-end-line="59" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -823,24 +789,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mvc/front-end/views/products/shop.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="137" column="26" selection-start-line="137" selection-start-column="26" selection-end-line="137" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mvc/front-end/models/OrderDetail.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="25" column="1" lean-forward="true" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mvc/front-end/controllers/PaymentController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -851,6 +803,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/front-end/.htaccess">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="503">
+          <caret line="30" column="61" selection-start-line="30" selection-start-column="61" selection-end-line="30" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mvc/front-end/models/Order.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -858,24 +817,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mvc/front-end/views/login/history.php">
+    <entry file="file://$PROJECT_DIR$/mvc/front-end/models/Pagination.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="32" column="23" lean-forward="true" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
+        <state relative-caret-position="480">
+          <caret line="59" column="44" selection-start-line="59" selection-start-column="44" selection-end-line="59" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/front-end/views/products/shop.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="137" column="22" selection-start-line="137" selection-start-column="18" selection-end-line="137" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mvc/front-end/controllers/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="172" column="28" lean-forward="true" selection-start-line="172" selection-start-column="28" selection-end-line="172" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mvc/front-end/models/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="77" column="50" selection-start-line="77" selection-start-column="50" selection-end-line="77" selection-end-column="50" />
+        <state relative-caret-position="344">
+          <caret line="175" column="50" lean-forward="true" selection-start-line="175" selection-start-column="50" selection-end-line="175" selection-end-column="50" />
         </state>
       </provider>
     </entry>
@@ -883,6 +842,41 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
           <caret line="87" column="3" selection-start-line="87" selection-start-column="3" selection-end-line="87" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/front-end/controllers/PaymentController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-642">
+          <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/front-end/models/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="85" column="64" selection-start-line="85" selection-start-column="64" selection-end-line="85" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/front-end/views/login/history.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="24" column="33" lean-forward="true" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/front-end/views/layouts/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="28" column="45" lean-forward="true" selection-start-line="28" selection-start-column="45" selection-end-line="28" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/front-end/views/homes/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="43" column="74" lean-forward="true" selection-start-line="43" selection-start-column="74" selection-end-line="43" selection-end-column="74" />
         </state>
       </provider>
     </entry>

@@ -14,7 +14,7 @@ require_once 'helpers/Helper.php';
                                 <p data-animation="fadeInLeft" data-delay=".7s" data-duration="2000ms">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat is aute irure.</p>
                                 <!-- Hero-btn -->
                                 <div class="hero__btn" data-animation="fadeInLeft" data-delay=".8s" data-duration="2000ms">
-                                    <a href="industries.html" class="btn hero-btn">Shop Now</a>
+                                    <a href="index.php?controller=product&action=showAll" class="btn hero-btn">Shop Now</a>
                                 </div>
                             </div>
                         </div>
@@ -36,7 +36,7 @@ require_once 'helpers/Helper.php';
                                 <p data-animation="fadeInLeft" data-delay=".7s" data-duration="2000ms">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat is aute irure.</p>
                                 <!-- Hero-btn -->
                                 <div class="hero__btn" data-animation="fadeInLeft" data-delay=".8s" data-duration="2000ms">
-                                    <a href="../products/shop.php" class="btn hero-btn">Shop Now</a>
+                                    <a href="index.php?controller=product&action=showAll" class="btn hero-btn">Shop Now</a>
                                 </div>
                             </div>
                         </div>
@@ -174,7 +174,7 @@ require_once 'helpers/Helper.php';
                             <!-- Button -->
                             <div class="row justify-content-center">
                                 <div class="room-btn pt-70">
-                                    <a href="index.php?controller=product&action=showAll.html" class="btn view-btn1">View More Products</a>
+                                    <a href="index.php?controller=product&action=showAll" class="btn view-btn1">View More Products</a>
                                 </div>
                             </div>
                         </div>
