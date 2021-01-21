@@ -26,8 +26,11 @@
     <?php foreach ($orders AS $order):?>
     <tr>
         <th scope="row"><?php echo "#".$order['id'];?></th>
-        <td><?php foreach ($products AS $product):?>
-        <?php echo $product['title']." x ".$product['quantity']."<br>";?>
+        <td><?php foreach ($products AS $key => $product)
+            foreach($product AS $k => $value):;?>
+        <?php if($value['order_id']==$order['id']) echo $value['title']." x ".$value['quantity']."<br>";
+
+        ?>
         <?php endforeach;?>
         </td>
         <td><?php echo $order['created_at'];?></td>

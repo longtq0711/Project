@@ -70,29 +70,28 @@ require_once 'helpers/Helper.php';
         ?>
         <h6 class="font-weight-bold mb-3">Price</h6>
         <div class="form-check pl-0 mb-3">
-
-            <input value="1" type="checkbox" class="form-check-input" id="under25" <?php echo $price1_checked;?> name="price">
-            <label class="form-check-label small text-uppercase card-link-secondary" for="under25">Under 1,000,000</label>
+                <input value="1" type="checkbox" class="form-check-input" id="under25" <?php echo $price1_checked;?> name="price">
+                <label class="form-check-label small text-uppercase card-link-secondary" for="under25">Under 1,000,000</label>
         </div>
         <div class="form-check pl-0 mb-3">
-            <input value="2" type="checkbox" class="form-check-input" id="2550" name="price" <?php echo $price2_checked;?>>
+            <input value="2" type="checkbox" class="form-check-input" id="under25" name="price" <?php echo $price2_checked;?>>
             <label class="form-check-label small text-uppercase card-link-secondary" for="2550">1,000,000 to 5,000,000</label>
         </div>
         <div class="form-check pl-0 mb-3">
-            <input value="3" type="checkbox" class="form-check-input" id="50100" name="price" <?php echo $price3_checked;?>>
+            <input value="3" type="checkbox" class="form-check-input" id="under25" name="price" <?php echo $price3_checked;?>>
             <label class="form-check-label small text-uppercase card-link-secondary" for="50100">5,000,000 to 10,000,000</label>
         </div>
         <div class="form-check pl-0 mb-3">
-            <input value="4" type="checkbox" class="form-check-input" id="100200" name="price" <?php echo $price4_checked;?>>
+            <input value="4" type="checkbox" class="form-check-input" id="under25" name="price" <?php echo $price4_checked;?>>
             <label class="form-check-label small text-uppercase card-link-secondary" for="100200">10,000,000 to 20,000,000</label>
         </div>
             <div class="form-check pl-0 mb-3">
-                <input value="1" type="checkbox" class="form-check-input" id="" name="category" <?php echo $category1_check;?>
-                <label class="form-check-label small text-uppercase card-link-secondary" for="">Mens Watch</label>
+                <input value="1" type="checkbox" class="form-check-input" id="under25" name="category" <?php echo $category1_check;?>
+                <label class="form-check-label small text-uppercase card-link-secondary" for="under25">Mens Watch</label>
             </div>
             <div class="form-check pl-0 mb-3">
-                <input value="2" type="checkbox" class="form-check-input" id="" name="category" <?php echo $category2_check;?>
-                <label class="form-check-label small text-uppercase card-link-secondary" for="100200">Ladies Watch</label>
+                <input value="2" type="checkbox" class="form-check-input" id="under25" name="category" <?php echo $category2_check;?>
+                <label class="form-check-label small text-uppercase card-link-secondary" for="under25">Ladies Watch</label>
             </div>
         <div class="form-group">
 

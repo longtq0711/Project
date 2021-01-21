@@ -174,9 +174,11 @@ class UserController extends Controller{
         $user_id = $_SESSION['user']['id'];
         $user_model = new User;
         $orders = $user_model->getOrder($user_id);
+        $i = 0;
         foreach ($orders AS $order) {
             $order_id = $order['id'];
-            $products = $user_model->getProduct($user_id, $order_id);
+            $products[$i] = $user_model->getProduct($user_id, $order_id);
+            $i++;
         }
         $this->content = $this->render('views/login/history.php',[
             'orders' => $orders,

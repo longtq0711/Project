@@ -81,7 +81,7 @@ class User extends Model
         return $order;
     }
     public function getProduct($user_id,$order_id) {
-        $obj_select = $this->connection->prepare("SELECT products.title, order_details.quantity FROM order_details INNER JOIN products
+        $obj_select = $this->connection->prepare("SELECT products.title, order_details.* FROM order_details INNER JOIN products
       ON products.id = order_details.product_id INNER JOIN orders ON orders.id = order_details.order_id 
       WHERE orders.user_id = $user_id AND order_details.order_id = $order_id ");
         $obj_select->execute();
