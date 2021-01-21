@@ -161,4 +161,32 @@ class ProductController extends Controller {
     ]);
     require_once 'views/layouts/main.php';
   }
+  public function search(){
+      $product_model = new Product();
+      if(isset($_POST['search'])) $_SESSION['search'] = $_POST['search'];
+      $str = $_SESSION['search'];
+      $str_search = "AND products.title LIKE'%".$str."%'";
+//      echo $str_search;
+      $count = $product_model->countSearch($str_search);
+      $params_pagination = [
+          'total' => $count,
+          'limit' => 9,
+          'controller' => 'product',
+          'action' => 'search',
+          'page' =>  isset($_GET['page']) ? $_GET['page'] : 1,
+          'full_mode' => FALSE,
+          'query' => '',
+          'category' => '',
+          'price' => '',
+          'filter' => ''
+      ];
+      $pagination_model = new Pagination($params_pagination);
+      $pagination = $pagination_model->getPagination();
+      $products = $product_model->search($str_search, $params_pagination);
+      $this->content = $this->render('views/products/search.php',[
+          'products' => $products,
+          'pagination' => $pagination
+      ]);
+      require_once 'views/layouts/main.php';
+  }
 }

@@ -58,6 +58,10 @@
                                 <div class="nav-search search-switch">
                                     <span class="flaticon-search"></span>
                                 </div>
+                                <form method="post" action="index.php?controller=product&action=search">
+                                    <input type="text" name="search">
+                                </form>
+
                             </li>
                             <li>
                                 <?php if(isset($_SESSION['user'])||isset($_COOKIE['remember'])) :?>

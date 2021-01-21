@@ -86,5 +86,22 @@ class Product extends Model {
       $obj_select->execute();
       return $obj_select->fetchColumn();
   }
+  public function countSearch($str)
+    {
+        $obj_select = $this->connection->prepare("SELECT COUNT(products.id) FROM products 
+  INNER JOIN categories ON products.category_id = categories.id WHERE products.status = 1 $str");
+        $obj_select->execute();
+        return $obj_select->fetchColumn();
+    }
+  public function search($str_search, $arr_params)
+    {
+        $limit = $arr_params['limit'];
+        $page = $arr_params['page'];
+        $start = ($page - 1) * $limit;
+        $obj_search = $this->connection->prepare("SELECT * FROM products WHERE products.status = 1 
+        $str_search LIMIT $start, $limit");
+        $obj_search->execute();
+        return $obj_search->fetchAll();
+    }
 }
 
