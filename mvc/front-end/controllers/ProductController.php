@@ -62,7 +62,7 @@ class ProductController extends Controller {
     } else {
         $count = $product_model->countTotal();
     }
-    echo $count;
+//    echo $count;
     $price = '';
     $filter = '';
     $category = '';

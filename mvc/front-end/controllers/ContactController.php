@@ -7,6 +7,4 @@ class ContactController extends Controller {
         $this->content = $this->render('views/contact/contact.php');
         require_once 'views/layouts/main.php';
     }
-
-}
 }

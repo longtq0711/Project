@@ -28,12 +28,12 @@
                                 <li><a href="index.php">Home</a></li>
                                 <li><a href="index.php?controller=product&action=showAll">shop</a>
                                     <ul class="submenu">
-                                        <li><a href="men_watch.html">Men Watch</a></li>
-                                        <li><a href="women_watch.html">Women Watch</a></li>
-                                        <li><a href="women_watch.html">Newest Watch</a></li>
+                                        <li><a href="index.php?action=showAll&controller=product&category=1&filter=Filter">Men Watch</a></li>
+                                        <li><a href="index.php?action=showAll&controller=product&category=2&filter=Filter">Women Watch</a></li>
+<!--                                        <li><a href="women_watch.html">Newest Watch</a></li>-->
                                     </ul>
                                 </li>
-                                <li><a href="about/about.php">about</a>
+<!--                                <li><a href="about/about.php">about</a>-->
 <!--                                <li class="hot"><a href="#">Latest</a>-->
                                     <ul class="submenu">
                                         <li><a href="products/shop.php"> Product list</a></li>
