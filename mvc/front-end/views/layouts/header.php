@@ -55,11 +55,21 @@
                     <div class="header-right">
                         <ul>
                             <li>
-                                <div class="nav-search search-switch">
-                                    <span class="flaticon-search"></span>
-                                </div>
-                                <form method="post" action="index.php?controller=product&action=search">
-                                    <input type="text" name="search">
+<!--                                <div class="nav-search search-switch">-->
+<!--                                    <span class="flaticon-search"></span>-->
+<!--                                </div>-->
+                                <form method="post" action="index.php?controller=product&action=search" id="search-form">
+<!--                                    <input type="text" name="search" placeholder="Search ...">-->
+                                    <div class="input-group rounded">
+                                        <input type="search" name="search" class="form-control rounded" placeholder="Search ..." aria-label="Search"
+                                               aria-describedby="search-addon" />
+                                        <button>
+<!--                                            <span class="input-group-text border-0" id="search-addon">-->
+                                                <i class="fas fa-search"></i>
+<!--                                            </span>-->
+                                        </button>
+
+                                    </div>
                                 </form>
 
                             </li>
