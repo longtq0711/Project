@@ -63,3 +63,7 @@
     background: #4CAF50;
     cursor: pointer;
 }
+
+#search-form {
+    margin: -5px 40px;
+}
