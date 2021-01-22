@@ -3,15 +3,14 @@ require_once 'models/Model.php';
 class User extends Model {
     public $id;
     public $username;
+    public $roles;
     public $password;
-    public $first_name;
-    public $last_name;
+    public $fullname;
     public $phone;
     public $address;
     public $email;
     public $avatar;
     public $jobs;
-    public $last_login;
     public $facebook;
     public $status;
     public $created_at;

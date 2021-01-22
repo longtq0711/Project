@@ -175,4 +175,70 @@ class Product extends Model
             ->prepare("DELETE FROM products WHERE id = $id");
         return $obj_delete->execute();
     }
+
+    public function getAllOrder() {
+        $obj_select = $this->connection->prepare("SELECT orders.* FROM order_details
+      INNER JOIN orders ON orders.id = order_details.order_id GROUP BY orders.id");
+        $obj_select->execute();
+        $order = $obj_select->fetchAll();
+        return $order;
+    }
+
+    public function getAllOrderToday() {
+        $current = date("Y-m-d");
+        $today = date("d", strtotime($current));
+        $current_month = date("m", strtotime($current));
+        $current_year = date("Y", strtotime($current));
+        $obj_select = $this->connection->prepare("SELECT orders.* FROM order_details
+      INNER JOIN orders ON orders.id = order_details.order_id WHERE YEAR(created_at) = $current_year
+      AND MONTH(created_at) = $current_month AND DAY(created_at) = $today
+      GROUP BY orders.id");
+        $obj_select->execute();
+        $order = $obj_select->fetchAll();
+        return $order;
+    }
+
+    public function getAllOrderMonth() {
+        $current = date("Y-m-d");
+        $current_month = date("m", strtotime($current));
+        $current_year = date("Y", strtotime($current));
+        $obj_select = $this->connection->prepare("SELECT orders.* FROM order_details
+      INNER JOIN orders ON orders.id = order_details.order_id WHERE YEAR(created_at) = $current_year
+      AND MONTH(created_at) = $current_month GROUP BY orders.id");
+        $obj_select->execute();
+        $order = $obj_select->fetchAll();
+        return $order;
+    }
+
+    public function getProductName($order_id) {
+        $obj_select = $this->connection->prepare("SELECT products.title, order_details.* FROM order_details INNER JOIN products
+      ON products.id = order_details.product_id INNER JOIN orders ON orders.id = order_details.order_id 
+      WHERE order_details.order_id = $order_id GROUP BY products.title");
+        $obj_select->execute();
+        $order = $obj_select->fetchAll();
+        return $order;
+    }
+
+    public function getTotalDay() {
+        $current = date("Y-m-d");
+        $today = date("d", strtotime($current));
+        $current_month = date("m", strtotime($current));
+        $current_year = date("Y", strtotime($current));
+        $obj_select = $this->connection->prepare("SELECT SUM(price_total) FROM orders WHERE
+        YEAR(created_at) = $current_year AND MONTH(created_at) = $current_month AND DAY(created_at) = $today");
+        $obj_select->execute();
+        return $obj_select->fetchColumn();
+    }
+
+    public function getTotalMonth()
+    {
+        $current = date("Y-m-d");
+        $current_month = date("m", strtotime($current));
+        $current_year = date("Y", strtotime($current));
+        $obj_select = $this->connection->prepare("SELECT SUM(price_total) FROM orders WHERE
+        YEAR(created_at) = $current_year AND MONTH(created_at) = $current_month");
+        $obj_select->execute();
+        return $obj_select->fetchColumn();
+    }
+
 }

@@ -241,4 +241,63 @@ class ProductController extends Controller
     header('Location: index.php?controller=product');
     exit();
   }
+
+  public function statisticView() {
+      $product_model = new Product;
+      $orders = $product_model->getAllOrder();
+      $i = 0;
+      foreach ($orders AS $order) {
+          $order_id = $order['id'];
+          $products[$i] = $product_model->getProductName($order_id);
+          $i++;
+      }
+
+      $this->content = $this->render('views/products/statistic_view.php', [
+          'orders' => $orders,
+          'products' => $products
+      ]);
+      require_once 'views/layouts/main.php';
+  }
+
+  public function viewTodayStatistic() {
+      $product_model = new Product;
+      $orders = $product_model->getAllOrderToday();
+      $i = 0;
+      foreach ($orders AS $order) {
+          $order_id = $order['id'];
+          $products[$i] = $product_model->getProductName($order_id);
+          $i++;
+      }
+      $total = $product_model->getTotalDay();
+      if (empty($products)) $products = '';
+
+      $this->content = $this->render('views/products/statistic_view.php', [
+          'orders' => $orders,
+          'products' => $products,
+          'total' => $total
+      ]);
+      require_once 'views/layouts/main.php';
+  }
+
+  public function viewMonthStatistic() {
+      $product_model = new Product;
+      $orders = $product_model->getAllOrderMonth();
+      $i = 0;
+      $total = 0;
+      foreach ($orders AS $order) {
+          $order_id = $order['id'];
+          $products[$i] = $product_model->getProductName($order_id);
+          $i++;
+      }
+      $total = $product_model->getTotalMonth();
+      if (empty($products)) $products = '';
+
+      $this->content = $this->render('views/products/statistic_view.php', [
+          'orders' => $orders,
+          'products' => $products,
+          'total' => $total
+      ]);
+      require_once 'views/layouts/main.php';
+  }
+
 }

@@ -102,6 +102,14 @@ if (isset($_SESSION['user'])) {
             </span>
                 </a>
             </li>
+            <li>
+                <a href="index.php?controller=product&action=statisticView">
+                    <i class="fa fa-user"></i> <span>Doanh thu</span>
+                    <span class="pull-right-container">
+              <!--<small class="label pull-right bg-green">new</small>-->
+            </span>
+                </a>
+            </li>
         </ul>
     </section>
     <!-- /.sidebar -->
